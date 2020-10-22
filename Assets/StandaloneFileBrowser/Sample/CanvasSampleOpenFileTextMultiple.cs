@@ -38,7 +38,6 @@ public class CanvasSampleOpenFileTextMultiple : MonoBehaviour, IPointerDownHandl
     }
 
     private void OnClick() {
-        // var paths = StandaloneFileBrowser.OpenFilePanel("Title", "", "txt", true);
         var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", "", true);
         if (paths.Length > 0) {
             var urlArr = new List<string>(paths.Length);

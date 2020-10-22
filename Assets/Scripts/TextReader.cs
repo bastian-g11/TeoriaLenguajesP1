@@ -8,6 +8,8 @@ public class TextReader : MonoBehaviour
 {
     public Text txt;
     public string lineaTexto;
+
+    #region singleton
     public static TextReader instance;
     void Awake()
     {
@@ -20,12 +22,7 @@ public class TextReader : MonoBehaviour
             instance = this;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
 
     public void SetText()
     {
@@ -38,24 +35,34 @@ public class TextReader : MonoBehaviour
     {
         //Una línea
         string aLine = null;
+
         //Todas las líneas
         string aParagraph = null;
+
         System.IO.StringReader strReader = new StringReader(lineaTexto);
-        while (true)
-        {
-            //Captua una línea
+        Automata automata = new Automata();
+
+        //Descomentar para que lea todas las líneas
+        //while (true)
+        //{
+            //Captura una línea
             aLine = strReader.ReadLine();
             if (aLine != null)
             {
                 aParagraph = aParagraph + aLine + " ";
-                //Autómata Estructura
-                Debug.Log("Linea: " + aLine);
+
+                //Mandar un cero siempre aquí??
+                automata.StructureReader(aLine, 0);
+
+
+
+                //Debug.Log("Linea: " + aLine);
             }
             else
             {
                 aParagraph = aParagraph + "\n";
-                break;
+                //break;
             }
-        }
+        //}
     }
 }
