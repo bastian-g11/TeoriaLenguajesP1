@@ -40,7 +40,7 @@ public class TextReader : MonoBehaviour
         string aParagraph = null;
 
         System.IO.StringReader strReader = new StringReader(lineaTexto);
-        Automata automata = new Automata();
+        MainStructure automata = new MainStructure();
 
         //Descomentar para que lea todas las líneas
         //while (true)

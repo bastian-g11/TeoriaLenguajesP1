@@ -3,49 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Automata
+public class ReservedWord : Automata
 {
-    public string line;
-    
-    public void StructureReader(string lineToRead, int _index)
+    public void FindReservedWord(string lineToRead, int _index)
     {
-        line = lineToRead;
-        string state = " ";
-        int index = _index;
-
-        for (int i = index; i < line.Length; i++)
-        {
-            char character = line[i];
-
-            if (state.Equals('E'))
-            {
-                Debug.Log("ERROR");
-                break;
-            }
-
-            if (Char.IsLetter(character))
-            {
-                ReservedWord(i);
-                break;
-            }
-            else if(Char.IsDigit(character))
-            {
-                state = "E";
-            }
-        }
-    }
-
-    public void ReservedWord(int _index)
-    {
+        string line = lineToRead;
         string state = "IN";
         int index = _index;
         bool isGone = false;
 
+        VariableSyntax vs = new VariableSyntax();
+
         for (int i = index; i < line.Length; i++)
         {
             if (isGone) return;
-            
+
             char character = line[i];
+            Debug.Log(character);
             switch (state)
             {
                 case "IN":
@@ -95,27 +69,31 @@ public class Automata
                      *entonces todas las demás letras van a 
                      * mandar al otro autómata
                      * */
-                    else if(Char.IsLetter(character))
+                    else if (Char.IsLetter(character))
                     {
                         Debug.Log("IN Resultó ser variable, vamos a revisarlo");
                         isGone = true;
-                        VariableSyntaxChecker(i);
+                        vs.StartAutomata(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/'))
                     {
-                        VariableSyntaxChecker(i);
+                        vs.StartAutomata(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
+
                     }
 
                     else if (character.Equals(' '))
                     {
                         state = "IN";
                     }
-
+ 
                     else if (Char.IsDigit(character))
                     {
+                        Debug.Log("ADSDAS");
                         state = "E";
                     }
 
@@ -151,30 +129,36 @@ public class Automata
                         Debug.Log("I12 Resultó ser variable, vamos a revisarlo");
                         Debug.Log("casdad: " + i);
                         isGone = true;
-                        VariableSyntaxChecker(i);
+                        vs.StartAutomata(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
 
                     }
 
                     else if (character.Equals('='))
                     {
-                        VariableSyntaxChecker(i);
+                        vs.StartAutomata(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
+
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/'))
                     {
-                        VariableSyntaxChecker(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
+
                     }
 
                     else if (character.Equals(' '))
                     {
-                        VariableSyntaxChecker(i);
+                        vs.StartAutomata(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
                     }
 
                     else if (Char.IsDigit(character))
                     {
-                        VariableSyntaxChecker(i);
+                        vs.StartAutomata(i);
+                        vs.VariableSyntaxChecker(line, vs.index);
                     }
 
                     else
@@ -285,142 +269,6 @@ public class Automata
 
                 default:
                     Debug.Log("Algo raro pasa");
-                    break;
-            }
-        }
-    }
-
-    public void VariableSyntaxChecker(int _index)
-    {
-        string state = "IN";
-        int index = _index;
-        Debug.Log("VSC, empezamos desde: " + index);
-        Debug.Log("VSC, empezamos desde: " + line[index]);
-
-        for (int i = index; i < line.Length; i++)
-        {
-            char character = line[i];
-            if (state.Equals("E"))
-            {
-                Debug.Log("Se entró a estado de error");
-                //Cortar el ciclo para no seguir evaluando
-                break;
-            }
-            switch (state)
-            {
-                case "IN":
-                    if (Char.IsLetterOrDigit(character)) 
-                    {
-                        Debug.Log("VSC, estoy leyendo una letra o #");
-                        state = "A";
-                    }
-
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/'))
-                    {
-                        state = "FF";
-                    }
-
-                    else if(character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (character.Equals('='))
-                    {
-                        //Lo manda al autómata de pila
-                    }
-
-                    else
-                    {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
-                    }
-                    break;
-
-                case "A":
-                    if (Char.IsLetterOrDigit(character))
-                    {
-                        state = "A";
-                    }
-
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/'))
-                    {
-                        state = "F";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (character.Equals('='))
-                    {
-                        //Lo manda al autómata de pila
-                    }
-
-                    else
-                    {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
-                    }
-                    break;
-
-                case "SS":
-                    Debug.Log("Entró a SS");
-                    if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/'))
-                    {
-                        state = "F";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (character.Equals('='))
-                    {
-                        //Lo manda al autómata de pila
-                    }
-
-                    else
-                    {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        Debug.Log("Entró a error, con este símbolo: " + character);
-                        state = "E";
-                    }
-                    break;
-
-                case "F":
-                    if (character.Equals('='))
-                    {
-                        //Lo manda al autómata de pila
-                    }
-
-                    else
-                    {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
-                    }
-                    break;
-
-                case "E":
-                    Debug.Log("Error en la línea");
-                    state = "E";
                     break;
             }
         }
