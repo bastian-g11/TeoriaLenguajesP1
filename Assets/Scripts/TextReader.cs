@@ -13,7 +13,7 @@ public class TextReader : MonoBehaviour
     public static TextReader instance;
     void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(this);
         }
@@ -30,39 +30,50 @@ public class TextReader : MonoBehaviour
         Debug.Log(lineaTexto);
         Recorrer();
     }
-    
+
     public void Recorrer()
     {
         //Una línea
         string aLine = null;
-
-        //Todas las líneas
-        string aParagraph = null;
-
         System.IO.StringReader strReader = new StringReader(lineaTexto);
-        MainStructure automata = new MainStructure();
+        AutomataType nextAutomata = AutomataController.instance.nextAutomata;
+        int index;
 
-        //Descomentar para que lea todas las líneas
-        //while (true)
-        //{
+        aLine = strReader.ReadLine();
+        bool canContinue = true;
+
+        while (canContinue)
+        {
             //Captura una línea
-            aLine = strReader.ReadLine();
-            if (aLine != null)
+            index = AutomataController.instance.index;
+            if(nextAutomata == AutomataType.Error || nextAutomata == AutomataType.None)
             {
-                aParagraph = aParagraph + aLine + " ";
-
-                //Mandar un cero siempre aquí??
-                automata.StructureReader(aLine, 0);
-
-
-
-                //Debug.Log("Linea: " + aLine);
+                canContinue = false;
             }
-            else
+
+            switch (nextAutomata)
             {
-                aParagraph = aParagraph + "\n";
-                //break;
+                case AutomataType.MainStructure:
+                    nextAutomata = AutomataController.instance.StartMainStructure(aLine, index);
+                    Debug.Log("Uno: " + nextAutomata);
+                    break;
+                case AutomataType.ReservedWord:
+                    nextAutomata = AutomataController.instance.StartReserverdWord(aLine, index);
+                    Debug.Log("Dos: " + nextAutomata);
+                    break;
+                case AutomataType.VariableSyntax:
+                    nextAutomata = AutomataController.instance.StartVariableSyntax(aLine, index);
+                    break;
+                case AutomataType.Error:
+                    Debug.Log("Llegó a error en TextReader");
+                    break;
+                case AutomataType.None:
+                    Debug.Log("Ningún autómata");
+                    break;
+                default:
+                    Debug.Log("Acabamos esta línea");
+                    break;
             }
-        //}
+        }
     }
 }

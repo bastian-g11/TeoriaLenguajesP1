@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ReservedWord : Automata
+public class ReservedWord
 {
-    public void FindReservedWord(string lineToRead, int _index)
+    public AutomataType FindReservedWord(string lineToRead, int _index)
     {
         string line = lineToRead;
         string state = "IN";
         int index = _index;
-        bool isGone = false;
-
-        VariableSyntax vs = new VariableSyntax();
 
         for (int i = index; i < line.Length; i++)
         {
-            if (isGone) return;
-
             char character = line[i];
-            Debug.Log(character);
+            Debug.Log("Símbolo a procesar: " + character);
             switch (state)
             {
                 case "IN":
@@ -65,35 +60,30 @@ public class ReservedWord : Automata
                         Debug.Log("ESTOY EN EL ESTADO D");
                     }
 
+                    else if (character.Equals(' '))
+                    {
+                        state = "IN";
+                    }
+
                     /*Si no es ninguno de las letras de arriba
                      *entonces todas las demás letras van a 
                      * mandar al otro autómata
                      * */
                     else if (Char.IsLetter(character))
                     {
-                        Debug.Log("IN Resultó ser variable, vamos a revisarlo");
-                        isGone = true;
-                        vs.StartAutomata(i);
-                        vs.VariableSyntaxChecker(line, vs.index);
+                        state = "EV";
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/'))
                     {
-                        vs.StartAutomata(i);
-                        vs.VariableSyntaxChecker(line, vs.index);
+                        state = "EV";
 
                     }
 
-                    else if (character.Equals(' '))
-                    {
-                        state = "IN";
-                    }
- 
                     else if (Char.IsDigit(character))
                     {
-                        Debug.Log("ADSDAS");
                         state = "E";
                     }
 
@@ -126,18 +116,14 @@ public class ReservedWord : Automata
                      * */
                     else if (Char.IsLetter(character))
                     {
-                        Debug.Log("I12 Resultó ser variable, vamos a revisarlo");
-                        Debug.Log("casdad: " + i);
-                        isGone = true;
-                        vs.StartAutomata(i);
-                        vs.VariableSyntaxChecker(line, vs.index);
+
+                        state = "EV";
 
                     }
 
                     else if (character.Equals('='))
                     {
-                        vs.StartAutomata(i);
-                        vs.VariableSyntaxChecker(line, vs.index);
+                        state = "EV";
 
                     }
 
@@ -145,20 +131,17 @@ public class ReservedWord : Automata
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/'))
                     {
-                        vs.VariableSyntaxChecker(line, vs.index);
-
+                        state = "EV";
                     }
 
                     else if (character.Equals(' '))
                     {
-                        vs.StartAutomata(i);
-                        vs.VariableSyntaxChecker(line, vs.index);
+                        state = "EV";
                     }
 
                     else if (Char.IsDigit(character))
                     {
-                        vs.StartAutomata(i);
-                        vs.VariableSyntaxChecker(line, vs.index);
+                        state = "EV";
                     }
 
                     else
@@ -172,105 +155,68 @@ public class ReservedWord : Automata
                     break;
 
                 case "N1":
+                    if (character.Equals('t'))
+                    {
+                        state = "T1";
+                        Debug.Log("ESTOY EN EL ESTADO T1");
+                    }
                     break;
 
                 case "T1":
+
+                    if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                    }
+
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "EVTP";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                    } 
+                    
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/'))
+                    {
+                        state = "E";
+                    }
+
+                    else
+                    {
+                        /*Si no llegó ninguno de los símbolos de arriba
+                         *va a mandar al estado de error, ya que sólo se
+                         *aceptan los de arriba
+                         * */
+                        state = "E";
+                    }
                     break;
 
-                case "F1":
-                    break;
 
-                case "L1":
-                    break;
+                case "EV":
+                    Debug.Log("Es una variable");
+                    AutomataController.instance.index = i;
+                    return AutomataType.VariableSyntax;
 
-                case "O1":
-                    break;
+                case "EVTP":
+                    Debug.Log("Es una variable con tipo de dato");
+                    AutomataController.instance.index = i;
+                    return AutomataType.VariableSyntax;
 
-                case "A1":
-                    break;
-
-                case "T2":
-                    break;
-
-                case "F2":
-                    break;
-
-                case "B1":
-                    break;
-
-                case "O2":
-                    break;
-
-                case "O3":
-                    break;
-
-                case "L2":
-                    break;
-
-                case "E1":
-                    break;
-
-                case "L3":
-                    break;
-
-                case "S1":
-                    break;
-
-                case "E2":
-                    break;
-
-                case "S2":
-                    break;
-
-                case "T3":
-                    break;
-
-                case "R1":
-                    break;
-
-                case "I3":
-                    break;
-
-                case "N2":
-                    break;
-
-                case "G":
-                    break;
-
-                case "C":
-                    break;
-
-                case "H":
-                    break;
-
-                case "A2":
-                    break;
-
-                case "R":
-                    break;
-
-                case "D":
-                    break;
-
-                case "O4":
-                    break;
-
-                case "U":
-                    break;
-
-                case "B2":
-                    break;
-
-                case "L4":
-                    break;
-
-                case "E3":
-                    break;
+                case "E":
+                    Debug.Log("Entró a error en ReservedWord");
+                    return AutomataType.Error;
 
                 default:
                     Debug.Log("Algo raro pasa");
                     break;
             }
         }
+        return AutomataType.None;
     }
 }

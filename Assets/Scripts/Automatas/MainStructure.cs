@@ -3,38 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MainStructure : Automata
+public class MainStructure 
 {
 
-    public void StructureReader(string lineToRead, int _index)
+    public AutomataType ReadStructure(string lineToRead, int _index)
     {
         string line = lineToRead;
-        string state = "IN";
         int index = _index;
 
         for (int i = index; i < line.Length; i++)
         {
             char character = line[i];
-
-            if (state.Equals("E"))
+            if (Char.IsLetter(character))
             {
-                Debug.Log("ERROR");
-                break;
+                AutomataController.instance.index = i;
+                Debug.Log("Entró a palabras reservadas");
+                return AutomataType.ReservedWord;
             }
-
-            else if (Char.IsLetter(character))
+            else if (character.Equals(' '))
             {
-                ReservedWord rw = new ReservedWord();
-                rw.StartAutomata(i);
-                rw.FindReservedWord(line, rw.index);
-                break;
+                Debug.Log("Espacio");
             }
-
             else if (Char.IsDigit(character))
             {
-                Debug.Log("ENTRÓ ");
-                state = "E";
+                Debug.Log("Entró a error en MainStructure");
+                return AutomataType.Error;
+            }
+            else
+            {
+                return AutomataType.Error;
             }
         }
+        return AutomataType.None;
     }
 }

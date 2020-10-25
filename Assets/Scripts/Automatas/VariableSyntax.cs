@@ -3,25 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class VariableSyntax : Automata
+public class VariableSyntax 
 {
-    public void VariableSyntaxChecker(string lineToRead, int _index)
+    public AutomataType CheckVariableSyntax(string lineToRead, int _index)
     {
         string line = lineToRead;
         string state = "IN";
         int index = _index;
-        Debug.Log("VSC, empezamos desde: " + index);
-        Debug.Log("VSC, empezamos desde: " + line[index]);
 
         for (int i = index; i < line.Length; i++)
         {
             char character = line[i];
-            if (state.Equals("E"))
-            {
-                Debug.Log("Se entró a estado de error");
-                //Cortar el ciclo para no seguir evaluando
-                break;
-            }
             switch (state)
             {
                 case "IN":
@@ -76,7 +68,7 @@ public class VariableSyntax : Automata
 
                     else if (character.Equals('='))
                     {
-                        //Lo manda al autómata de pila
+                        Debug.Log("Aquí debería ir al de pila");
                     }
 
                     else
@@ -105,6 +97,7 @@ public class VariableSyntax : Automata
                     else if (character.Equals('='))
                     {
                         //Lo manda al autómata de pila
+                        Debug.Log("2. Aquí debería ir al de pila");
                     }
 
                     else
@@ -135,10 +128,10 @@ public class VariableSyntax : Automata
                     break;
 
                 case "E":
-                    Debug.Log("Error en la línea");
-                    state = "E";
-                    break;
+                    Debug.Log("Entró a error en VariableSyntax");
+                    return AutomataType.Error;
             }
         }
+        return AutomataType.None;
     }
 }
