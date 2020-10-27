@@ -64,14 +64,17 @@ public class TextReader : MonoBehaviour
                 case AutomataType.VariableSyntax:
                     nextAutomata = AutomataController.instance.StartVariableSyntax(aLine, index);
                     break;
+                case AutomataType.StackAutomata:
+                    nextAutomata = AutomataController.instance.StartStackAutomata(aLine, index);
+                    break;
                 case AutomataType.Error:
                     Debug.Log("Llegó a error en TextReader");
                     break;
                 case AutomataType.None:
-                    Debug.Log("Ningún autómata");
+                    Debug.Log("Ningún autómata, debería aceptarse la línea (?");
                     break;
                 default:
-                    Debug.Log("Acabamos esta línea");
+                    Debug.Log("Default case de TextReader");
                     break;
             }
         }
