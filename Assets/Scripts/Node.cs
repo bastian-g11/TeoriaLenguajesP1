@@ -13,6 +13,7 @@ public class Node
         dataType = _dataType;
         value = _value;
         nextNode = null;
+
     }
 
     public string GetDataType()
