@@ -11,6 +11,7 @@ public class AutomataController : MonoBehaviour
     MainStructure mc;
     ReservedWord rw;
     VariableSyntax vs;
+    StackAutomata sa;
     #endregion
 
     #region singleton
@@ -33,6 +34,7 @@ public class AutomataController : MonoBehaviour
         mc = new MainStructure();
         rw = new ReservedWord();
         vs = new VariableSyntax();
+        sa = new StackAutomata();
         nextAutomata = AutomataType.MainStructure;
         index = 0;
     }
@@ -50,5 +52,10 @@ public class AutomataController : MonoBehaviour
     public AutomataType StartVariableSyntax(string lineToRead, int _index)
     {
         return vs.CheckVariableSyntax(lineToRead, _index);
+    }
+
+    public AutomataType StartStackAutomata(string lineToRead, int _index)
+    {
+        return sa.CheckRightSideStructure(lineToRead, _index);
     }
 }

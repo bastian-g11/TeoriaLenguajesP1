@@ -10,10 +10,11 @@ public class VariableSyntax
         string line = lineToRead;
         string state = "IN";
         int index = _index;
+        char character;
 
         for (int i = index; i < line.Length; i++)
         {
-            char character = line[i];
+           character = line[i];
             switch (state)
             {
                 case "IN":
@@ -32,11 +33,13 @@ public class VariableSyntax
                     else if (character.Equals(' '))
                     {
                         state = "SS";
+                        Debug.Log("AAA");
                     }
 
                     else if (character.Equals('='))
                     {
-                        //Lo manda al autómata de pila
+                        Debug.Log("Aquí debería ir al de pila 1");
+                        state = "VAP";
                     }
 
                     else
@@ -56,7 +59,7 @@ public class VariableSyntax
                     }
 
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/'))
+                       character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
                     }
@@ -68,7 +71,8 @@ public class VariableSyntax
 
                     else if (character.Equals('='))
                     {
-                        Debug.Log("Aquí debería ir al de pila");
+                        Debug.Log("Aquí debería ir al de pila 2");
+                        state = "VAP";
                     }
 
                     else
@@ -97,7 +101,8 @@ public class VariableSyntax
                     else if (character.Equals('='))
                     {
                         //Lo manda al autómata de pila
-                        Debug.Log("2. Aquí debería ir al de pila");
+                        Debug.Log("2. Aquí debería ir al de pila 3");
+                        state = "VAP";
                     }
 
                     else
@@ -115,6 +120,8 @@ public class VariableSyntax
                     if (character.Equals('='))
                     {
                         //Lo manda al autómata de pila
+                        Debug.Log("Aquí debería ir al de pila 4");
+                        state = "VAP";
                     }
 
                     else
@@ -127,11 +134,17 @@ public class VariableSyntax
                     }
                     break;
 
+                case "VAP":
+
+                    //Se pasa solo la i para no procesar el = 
+                    AutomataController.instance.index = i ;
+                    return AutomataType.StackAutomata;
+
                 case "E":
                     Debug.Log("Entró a error en VariableSyntax");
                     return AutomataType.Error;
             }
         }
-        return AutomataType.None;
+        return AutomataType.Error;
     }
 }

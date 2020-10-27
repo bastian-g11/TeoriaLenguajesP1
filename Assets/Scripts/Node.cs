@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Node
 {
-    private string dataType;
+    private string classType;
     private string value;
     private Node nextNode;
 
-    public Node(string _dataType, string _value)
+    public Node(string _classType, string _value)
     {
-        dataType = _dataType;
+        classType = _classType;
         value = _value;
         nextNode = null;
 
     }
 
-    public string GetDataType()
+    public string GetClassType()
     {
-        return dataType;
+        return classType;
     }
 
     public string GetValue()
@@ -31,9 +31,9 @@ public class Node
         return nextNode;
     }
 
-    public void SetDataType(string _dataType)
+    public void SetClassType(string _classType)
     {
-        dataType = _dataType;
+        classType = _classType;
     }
 
     public void SetValue(string _value)

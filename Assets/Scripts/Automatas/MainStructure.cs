@@ -10,19 +10,26 @@ public class MainStructure
     {
         string line = lineToRead;
         int index = _index;
+        char character;
 
         for (int i = index; i < line.Length; i++)
         {
-            char character = line[i];
+            character = line[i];
             if (Char.IsLetter(character))
             {
                 AutomataController.instance.index = i;
                 Debug.Log("Entró a palabras reservadas");
+                Debug.Log("Entró con: "+character);
                 return AutomataType.ReservedWord;
             }
             else if (character.Equals(' '))
             {
                 Debug.Log("Espacio");
+            }
+
+            else if (character.Equals(';'))
+            {
+                Debug.Log("Entró un ;");
             }
             else if (Char.IsDigit(character))
             {

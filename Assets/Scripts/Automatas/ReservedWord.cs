@@ -10,10 +10,11 @@ public class ReservedWord
         string line = lineToRead;
         string state = "IN";
         int index = _index;
+        char character;
 
         for (int i = index; i < line.Length; i++)
         {
-            char character = line[i];
+            character = line[i];
             Debug.Log("Símbolo a procesar: " + character);
             switch (state)
             {
@@ -72,6 +73,7 @@ public class ReservedWord
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        Debug.Log("La i va en: " + i);
                     }
 
                     //Operadores finales
@@ -1395,16 +1397,19 @@ public class ReservedWord
 
                 case "EV":
                     Debug.Log("Es una variable");
+                    //Insertar creación de nodo ??
                     AutomataController.instance.index = i;
                     return AutomataType.VariableSyntax;
 
                 case "EVTP":
                     Debug.Log("Es una variable con tipo de dato");
+                    //Insertar creación de nodo ??
                     AutomataController.instance.index = i;
                     return AutomataType.VariableSyntax;
 
                 case "E":
                     Debug.Log("Entró a error en ReservedWord");
+                    //Instar eliminación de lista ??
                     return AutomataType.Error;
 
                 default:
@@ -1412,6 +1417,7 @@ public class ReservedWord
                     break;
             }
         }
-        return AutomataType.None;
+        //Debería ser error o None?
+        return AutomataType.Error;
     }
 }
