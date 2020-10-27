@@ -140,6 +140,60 @@ public class StackAutomata
                     }
                     break;
 
+                case "K":
+
+                    if (character.Equals('+'))
+                    {
+                        Replace("+");
+                    }
+
+                    else if (character.Equals('-'))
+                    {
+                        Replace("-");
+                    }
+
+                    else if (character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                    {
+                        Replace("S");
+                    }
+
+                    else if (character.Equals('<') || character.Equals('>') || character.Equals('!'))
+                    {
+                        Replace("B");
+                    }
+
+                    else if (character.Equals('='))
+                    {
+                        Replace("=");
+                    }
+
+                    else if (character.Equals('|'))
+                    {
+                        Replace("|");
+                    }
+
+                    else if (character.Equals('&'))
+                    {
+                        Replace("&");
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        Replace("VAE");
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        Debug.Log("Entró espacio en el de pila");
+                    }
+
+                    else
+                    {
+                        Replace("ER");
+
+                    }
+                    break;
+
                 case "V":
 
                     if (Char.IsLetter(character) || character.Equals('$') || character.Equals('_')
@@ -241,6 +295,12 @@ public class StackAutomata
                         Replace("&");
                     }
 
+                    else if (character.Equals(' '))
+                    {
+                        Replace("K");
+                        Debug.Log("Entró espacio en el de pila, después de un #");
+                    }
+
                     else if (character.Equals(';'))
                     {
                         Debug.Log("Simbolo: "+character);
@@ -337,10 +397,14 @@ public class StackAutomata
 
                 case "-":
 
-                    if (Char.IsLetter(character) || character.Equals('$') || character.Equals('_')
-                        || Char.IsDigit(character))
+                    if (Char.IsLetter(character) || character.Equals('$') || character.Equals('_'))
                     {
-                        Debug.Log("Avance en -");
+                        Replace("V");
+                    }
+
+                    else if(Char.IsDigit(character))
+                    {
+                        Replace("N");
                     }
 
                     else if (character.Equals('.'))

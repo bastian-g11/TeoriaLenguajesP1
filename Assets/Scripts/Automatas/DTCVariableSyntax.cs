@@ -10,10 +10,13 @@ public class DTCVariableSyntax : MonoBehaviour
         string line = lineToRead;
         string state = "IN";
         int index = _index;
+        char character; 
 
         for (int i = index; i < line.Length; i++)
         {
-            char character = line[i];
+            character = line[i];
+            Debug.Log("Estoy en DTC, en el estado: " + state);
+            Debug.Log("Símbolo a procesar: " + character);
             switch (state)
             {
                 case "IN":

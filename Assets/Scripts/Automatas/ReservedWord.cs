@@ -1405,7 +1405,7 @@ public class ReservedWord
                     Debug.Log("Es una variable con tipo de dato");
                     //Insertar creación de nodo ??
                     AutomataController.instance.index = i;
-                    return AutomataType.VariableSyntax;
+                    return AutomataType.DTVariableSyntax;
 
                 case "E":
                     Debug.Log("Entró a error en ReservedWord");

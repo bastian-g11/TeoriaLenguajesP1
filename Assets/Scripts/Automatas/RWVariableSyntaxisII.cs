@@ -5,15 +5,17 @@ using System;
 
 public class RWVariableSyntaxisII : MonoBehaviour
 {
-    public AutomataType FindVariableII(string lineaToRead, int _index)
+    public AutomataType FindReservedWordInVariable(string lineaToRead, int _index)
     {
         string line = lineaToRead;
         string state = "IN";
         int index = _index;
+        char character;
 
         for (int i = index; i < line.Length; i++)
         {
-            char character = line[i];
+            character = line[i];
+            Debug.Log("Estoy en RW2, en el estado: " + state);
             Debug.Log("Símbolo a procesar: " + character);
             switch (state)
             {
@@ -76,10 +78,10 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
-
                     }
 
                     else if (Char.IsDigit(character))
@@ -121,7 +123,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -134,6 +137,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -164,7 +177,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -177,6 +191,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -208,7 +232,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -238,7 +263,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -251,6 +277,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -274,7 +310,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -287,6 +324,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -310,7 +357,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -323,6 +371,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -346,7 +404,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -361,6 +420,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
                     else
                     {
                         state = "E";
@@ -386,7 +454,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -416,7 +485,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -442,7 +512,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -455,6 +526,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -478,7 +559,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -491,6 +573,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -514,7 +606,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -527,6 +620,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -554,7 +657,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -580,7 +684,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -593,6 +698,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -617,7 +732,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -630,6 +746,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -653,7 +779,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -666,6 +793,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -693,7 +830,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -719,7 +857,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -732,6 +871,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -755,7 +904,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -768,6 +918,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -791,7 +951,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -804,6 +965,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -827,7 +998,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -840,6 +1012,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -863,7 +1045,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -876,6 +1059,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -898,12 +1091,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "E";
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -929,7 +1123,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -942,6 +1137,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -966,7 +1171,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -979,6 +1185,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1003,7 +1219,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -1018,6 +1235,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
                     else
                     {
                         state = "E";
@@ -1028,7 +1255,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     if (Char.IsLetter(character))
                     {
-                        state = "EV";
+                        state = "E";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1043,7 +1270,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -1070,7 +1298,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -1083,6 +1312,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1107,7 +1346,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -1120,6 +1360,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1144,7 +1394,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -1157,6 +1408,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1180,7 +1441,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -1193,6 +1455,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1216,7 +1488,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "EV";
                     }
@@ -1229,6 +1502,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "EV";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1256,7 +1539,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals(';'))
                     {
                         state = "E";
                     }
@@ -1275,10 +1559,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
                 case "EV":
                     Debug.Log("Es una variable");
                     AutomataController.instance.index = i;
-                    return AutomataType.VariableSyntax;
+                    return AutomataType.DTCVariableSyntax;
+
+                case "VAE":
+                    Debug.Log("Vuelve al autómata principal");
+                    AutomataController.instance.index = i - 1;
+                    return AutomataType.MainStructure;
 
                 case "E":
-                    Debug.Log("Entró a error en RWV");
+                    Debug.Log("Entró a error en RWV2");
                     return AutomataType.Error;
 
                 default:
