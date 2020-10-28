@@ -17,6 +17,16 @@ public class DTCVariableSyntax : MonoBehaviour
             character = line[i];
             Debug.Log("Estoy en DTC, en el estado: " + state);
             Debug.Log("Símbolo a procesar: " + character);
+
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']')
+                || character.Equals('<') || character.Equals('>'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en DTCVS");
+                continue;
+            }
+
             switch (state)
             {
                 case "IN":
@@ -28,7 +38,7 @@ public class DTCVariableSyntax : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "D";
+                        state = "IN";
                     }
 
                     else if (character.Equals(';'))

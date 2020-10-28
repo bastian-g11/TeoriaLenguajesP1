@@ -14,8 +14,19 @@ public class RWVariableSyntaxis : MonoBehaviour
 
         for (int i = index; i < line.Length; i++)
         {
-           character = line[i];
+            character = line[i];
+            Debug.Log("Estoy en RWVS, en el estado: " + state);
             Debug.Log("Símbolo a procesar: " + character);
+
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']')
+                || character.Equals('<') || character.Equals('>'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en RWVS");
+                continue;
+            }
+
             switch (state)
             {
                 case "IN":

@@ -28,6 +28,7 @@ public class TextReader : MonoBehaviour
     {
         lineaTexto = txt.text;
         Debug.Log(lineaTexto);
+        AutomataController.instance.index = 0;
         Recorrer();
     }
 

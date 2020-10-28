@@ -15,13 +15,24 @@ public class MainStructure
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
+
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']')
+                || character.Equals('<') || character.Equals('>'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en MS");
+                continue;
+            }
+
             if (Char.IsLetter(character))
             {
                 AutomataController.instance.index = i;
                 Debug.Log("Entró a palabras reservadas");
-                Debug.Log("Entró con: "+character);
+                Debug.Log("Entró con: " + character);
                 return AutomataType.ReservedWord;
             }
+
             else if (character.Equals(' '))
             {
                 Debug.Log("Espacio");

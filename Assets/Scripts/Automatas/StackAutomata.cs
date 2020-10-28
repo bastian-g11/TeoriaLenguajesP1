@@ -14,6 +14,7 @@ public class StackAutomata
         string symbol;
         char character;
 
+        stack.Clear();
         stack.Push("T"); //Triangulo de pila vacía
         stack.Push("C");
 
@@ -21,8 +22,18 @@ public class StackAutomata
         {
             character = line[i];
             symbol = (string)stack.Peek();
-            Debug.Log("Caracter: " + character);
-            Debug.Log("TENEMOS ESTO: " + (string)stack.Peek());
+
+            Debug.Log("Símbolo en TOPE de pila: " + (string)stack.Peek());
+            Debug.Log("Símbolo a procesar: " + character);
+
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en VS");
+                continue;
+            }
+
             switch (symbol)
             {
                 case "C":
@@ -131,6 +142,11 @@ public class StackAutomata
                     else if (character.Equals(' '))
                     {
                         Debug.Log("Entró espacio en el de pila");
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        Replace("VAE");
                     }
 
                     else
@@ -301,6 +317,11 @@ public class StackAutomata
                         Debug.Log("Entró espacio en el de pila, después de un #");
                     }
 
+                    else if (character.Equals('E') || character.Equals('e'))
+                    {
+                        Replace("E");
+                    }
+
                     else if (character.Equals(';'))
                     {
                         Debug.Log("Simbolo: "+character);
@@ -359,6 +380,11 @@ public class StackAutomata
                         Replace("N");
                     }
 
+                    else if (character.Equals('E') || character.Equals('e'))
+                    {
+                        Replace("E");
+                    }
+
                     else
                     {
                         Replace("ER");
@@ -367,10 +393,14 @@ public class StackAutomata
 
                 case "+":
 
-                    if (Char.IsLetter(character) || character.Equals('$') || character.Equals('_')
-                        || Char.IsDigit(character))
+                    if (Char.IsLetter(character) || character.Equals('$') || character.Equals('_'))
                     {
-                        Debug.Log("Avance en +");
+                        Replace("V");
+                    }
+                    
+                    else if(Char.IsDigit(character))
+                    {
+                        Replace("N");
                     }
 
                     else if (character.Equals('"'))
@@ -491,7 +521,7 @@ public class StackAutomata
 
                     if(char.IsDigit(character))
                     {
-                        Debug.Log("Avance en E");
+                        Replace("Z");
                     }
 
                     else if (character.Equals('+'))
@@ -515,7 +545,20 @@ public class StackAutomata
 
                     if (char.IsDigit(character))
                     {
-                        Debug.Log("Avance en Y");
+                        Replace("Z");
+                    }
+
+                    else
+                    {
+                        Replace("ER");
+                    }
+                    break;
+
+                case "Z":
+
+                    if (char.IsDigit(character))
+                    {
+                        Debug.Log("Avance en Z");
                     }
 
                     else if (character.Equals('+'))
@@ -555,10 +598,10 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró espacio en el de pila");
+                        Replace("K");
                     }
 
-                    else if(character.Equals(';'))
+                    else if (character.Equals(';'))
                     {
                         Replace("VAE");
                     }
@@ -567,8 +610,8 @@ public class StackAutomata
                     {
                         Replace("ER");
                     }
-                    break;
 
+                    break;
                 case "VAE":
                     Debug.Log("Vuelve al autómata principal desde el de Pila");
                     AutomataController.instance.index = i - 1;

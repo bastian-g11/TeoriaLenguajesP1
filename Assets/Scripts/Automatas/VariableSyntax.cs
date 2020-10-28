@@ -14,7 +14,19 @@ public class VariableSyntax
 
         for (int i = index; i < line.Length; i++)
         {
-           character = line[i];
+            character = line[i];
+            Debug.Log("Estoy en VS, en el estado: " + state);
+            Debug.Log("Símbolo a procesar: " + character);
+
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']')
+                || character.Equals('<') || character.Equals('>'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en VS");
+                continue;
+            }
+
             switch (state)
             {
                 case "IN":

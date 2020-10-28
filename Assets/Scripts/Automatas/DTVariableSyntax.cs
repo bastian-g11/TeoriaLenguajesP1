@@ -15,6 +15,18 @@ public class DTVariableSyntax : MonoBehaviour
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
+            Debug.Log("Estoy en DT, en el estado: " + state);
+            Debug.Log("Símbolo a procesar: " + character);
+
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']')
+                || character.Equals('<') || character.Equals('>'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en DTVS");
+                continue;
+            }
+
             switch (state)
             {
                 case "IN":
@@ -26,7 +38,7 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "D";
+                        state = "IN";
                     }
 
                     else if (character.Equals(';'))
@@ -160,7 +172,7 @@ public class DTVariableSyntax : MonoBehaviour
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 4");
-                        state = "VAE";
+                        state = "VAP";
                     }
 
                     else

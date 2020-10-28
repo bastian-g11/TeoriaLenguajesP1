@@ -15,7 +15,17 @@ public class ReservedWord
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
+            Debug.Log("Estoy en RW, en el estado: " + state);
             Debug.Log("Símbolo a procesar: " + character);
+            if (character.Equals('{') || character.Equals('}')
+                || character.Equals('(') || character.Equals(')')
+                || character.Equals('[') || character.Equals(']')
+                || character.Equals('<') || character.Equals('>'))
+            {
+                Debug.Log("Entró un símbolo que debemos ignorar en RW");
+                continue;
+            }
+
             switch (state)
             {
                 case "IN":
