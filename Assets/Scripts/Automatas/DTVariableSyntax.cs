@@ -11,7 +11,8 @@ public class DTVariableSyntax : MonoBehaviour
         string state = "IN";
         int index = _index;
         char character;
-
+        string error = null;
+        bool hasError = false;
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
@@ -55,11 +56,12 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        Debug.Log("El nombre de la variable empieza de manera incorrecta");
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -105,7 +107,11 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -141,7 +147,11 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -177,7 +187,11 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -189,8 +203,12 @@ public class DTVariableSyntax : MonoBehaviour
                     }
 
                     else
-                    { 
-                        state = "E";
+                    {
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -201,23 +219,49 @@ public class DTVariableSyntax : MonoBehaviour
                 case "VAE":
                     Debug.Log("Vuelve al autómata principal");
                     AutomataController.instance.index = i - 1;
+                    if (error != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.MainStructure;
 
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
                     AutomataController.instance.index = i;
+                    if (error != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.RW2VariableSyntax;
 
                 case "VAP":
                     Debug.Log("Va al autómata de pila");
                     //Se pasa solo la i para no procesar el = 
                     AutomataController.instance.index = i;
+                    if (error != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.StackAutomata;
 
                 case "E":
                     Debug.Log("Entró a error en DTVariableSyntax");
-                    return AutomataType.Error;
+                    //return AutomataType.Error;
+                    break;
             }
+        }
+        if (state.Equals("VAE"))
+        {
+            AutomataController.instance.index = line.Length - 1;
+            if (error != null)
+            {
+                ErrorController.instance.SetErrorMessage(error);
+                ErrorController.instance.SetLineHasError(true);
+            }
+            return AutomataType.MainStructure;
         }
         return AutomataType.Error;
     }

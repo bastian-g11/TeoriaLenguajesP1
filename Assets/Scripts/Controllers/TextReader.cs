@@ -6,11 +6,6 @@ using System.IO;
 
 public class TextReader : MonoBehaviour
 {
-    public Text txt;
-    public Text errorText;
-    public string lineaTexto;
-    public string lineErrors;
-
     #region singleton
     public static TextReader instance;
     void Awake()
@@ -26,40 +21,52 @@ public class TextReader : MonoBehaviour
     }
     #endregion
 
-    public void SetText()
+    public void SetLinkedList()
     {
-        lineaTexto = txt.text;
-        Debug.Log(lineaTexto);
-        AutomataController.instance.index = 0;
-        Recorrer();
+        SinglyLinkedListController.instance.CreateSinglyLinkedList();
     }
 
-    public void Recorrer()
+    public void AddNode(string _dataType, string _value)
     {
-        //Una línea
+        SinglyLinkedListController.instance.AddNode(_dataType, _value);
+    }
+
+    public void ResetLinkedList()
+    {
+        SinglyLinkedListController.instance.ResetSinglyLinkedList();
+    }
+
+    public void Recorrer(string _lineToRead)
+    {
         string aLine = null;
+        string lineToRead = _lineToRead;
         int index;
         int lineNumber = 0;
         bool canContinue = true;
-
-        System.IO.StringReader strReader = new StringReader(lineaTexto);
+        bool lineHasError;
+        System.IO.StringReader strReader = new StringReader(lineToRead);
 
         //Aquí podría asignarse directamente el tipo de autómata?
-        AutomataType nextAutomata = AutomataController.instance.nextAutomata;
+        //AutomataType nextAutomata = AutomataController.instance.nextAutomata;
+        AutomataType nextAutomata = AutomataType.MainStructure;
 
-        while(true)
+        int ii = 0;
+        while(ii<1)//true)
         {
+            ii+=1;
             //Reinicio todo
             aLine = strReader.ReadLine();
             if (aLine == null) break;
+
             AutomataController.instance.index = 0;
             nextAutomata = AutomataType.MainStructure;
             canContinue = true;
             lineNumber += 1;
-            lineErrors = null;
+            SetLinkedList();
+
             Debug.Log(aLine);
             Debug.Log("*************************************************");
-
+            
             while (canContinue)
             {
                 //Captura una línea
@@ -125,6 +132,17 @@ public class TextReader : MonoBehaviour
                 }
             }
 
+            lineHasError = ErrorController.instance.GetLineHasError();
+            UIController.instance.SetErrorText(lineNumber);
+            if (lineHasError)
+            {
+                ResetLinkedList();
+               
+            }
+            else
+            {
+                //Muestre la LG
+            }
         }
 
     }

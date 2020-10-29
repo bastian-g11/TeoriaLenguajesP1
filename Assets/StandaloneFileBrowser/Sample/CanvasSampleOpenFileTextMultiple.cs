@@ -59,6 +59,6 @@ public class CanvasSampleOpenFileTextMultiple : MonoBehaviour, IPointerDownHandl
             outputText += loader.text;
         }
         output.text = outputText;
-        TextReader.instance.SetText();
+        UIController.instance.SetText();
     }
 }

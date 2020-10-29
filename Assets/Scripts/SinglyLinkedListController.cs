@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SinglyLinkedListController : MonoBehaviour
 {
-    SinglyLinkedList singlyLinkedList = null;
+    public SinglyLinkedList singlyLinkedList = null;
 
     #region singleton
     public static SinglyLinkedListController instance;

@@ -13,6 +13,8 @@ public class StackAutomata
         int index = _index;
         string symbol;
         char character;
+        bool hasError = false;
+        string errors = null;
 
         stack.Clear();
         stack.Push("T"); //Triangulo de pila vacía
@@ -65,7 +67,9 @@ public class StackAutomata
                     else
                     {
                         Debug.Log("Error 1 ");
-                        Replace("ER");
+                        errors = errors + "- La asignación empieza de forma inválida\n";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -98,7 +102,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- La asignación tiene 2 operadores seguidos";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -151,8 +157,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inválido después de cierre de comillas\n";
 
+                        //Replace("ER");
                     }
                     break;
 
@@ -205,8 +212,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Expresión inválida después de número\n";
 
+                        //Replace("ER");
                     }
                     break;
 
@@ -260,9 +268,11 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Error en sintaxis de alguna variable\n";
+
+                        //Replace("ER");
                     }
-                        break;
+                    break;
 
                 case "N":
 
@@ -331,7 +341,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Error de sintaxis en número \n";
+
+                        //Replace("ER");
                     }
 
                     break;
@@ -342,7 +354,6 @@ public class StackAutomata
                     {
                         stack.Pop();
                     }
-
                     break;
 
                 case "S":
@@ -369,7 +380,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Dos operadores seguidos o símbolo inesperado\n";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -387,7 +400,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Error de sintaxis después de punto (.)\n";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -420,7 +435,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Dos operadores seguidos\n";
+
+                        //Replace("ER");
                     }
 
                     break;
@@ -449,7 +466,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Dos operadores seguidos\n";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -472,7 +491,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inesperado luego de operador booleano\n";
+
+                        //Replace("ER");
                     }
 
                     break;
@@ -486,7 +507,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inesperado después de igual (=) \n";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -499,7 +522,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inesperado después de ampersand(&) \n";
+
+                        //Replace("ER");
                     }
 
                     break;
@@ -513,7 +538,8 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inesperado después de símbolo de pica (|) \n";
+                        //Replace("ER");
                     }
                     break;
 
@@ -536,7 +562,8 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inesperado después de símbolo de notación científica \n";
+                        //Replace("ER");
                     }
 
                     break;
@@ -550,7 +577,9 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Símbolo inesperado después símbolo signo de la parte de notación científica\n";
+
+                        //Replace("ER");
                     }
                     break;
 
@@ -608,30 +637,67 @@ public class StackAutomata
 
                     else
                     {
-                        Replace("ER");
+                        errors = errors + "- Exponente de notación científica son sintaxis incorrecta\n";
+
+                        //Replace("ER");
                     }
 
                     break;
                 case "VAE":
                     Debug.Log("Vuelve al autómata principal desde el de Pila");
                     AutomataController.instance.index = i - 1;
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.MainStructure;
 
                 case "ER":
-                    return AutomataType.Error;
+                    //return AutomataType.Error;
+                    break;
             }
+
+        }
+        Debug.Log("Final de secuencia, esto quedó en el tope: " + stack.Peek());
+
+        if (stack.Peek().Equals("CM"))
+        {
+            errors = errors + "- Falta cerrar comillas\n";
+            ErrorController.instance.SetErrorMessage(errors);
+            ErrorController.instance.SetLineHasError(true);
+            return AutomataType.MainStructure;
         }
 
-        //Con i procesamos el símbolo siguiente al que nos hace cambiar de estado
-        //Con i-1 procesamos el símbolo que nos hace cambiar de estado en el otro Autómata
-
-        if(stack.Pop().Equals("VAE"))
+        else if (stack.Peek().Equals("VAE"))
         {
             AutomataController.instance.index = line.Length - 1;
+            if (errors != null)
+            {
+                ErrorController.instance.SetErrorMessage(errors);
+                ErrorController.instance.SetLineHasError(true);
+            }
             return AutomataType.MainStructure;
+        }
+
+        else if (stack.Peek().Equals("K") || stack.Peek().Equals("T") ||
+            stack.Peek().Equals("V") || stack.Peek().Equals("N") || stack.Peek().Equals("Z"))
+        {
+            errors = errors + "- Falta punto y coma (;) \n";
+            ErrorController.instance.SetErrorMessage(errors);
+            ErrorController.instance.SetLineHasError(true);
+        }
+        else
+        {
+            errors = errors + "- Hay un error al final de la línea \n- Falta punto y coma (;) \n";
+            ErrorController.instance.SetErrorMessage(errors);
+            ErrorController.instance.SetLineHasError(true);
         }
         return AutomataType.Error;
     }
+    //Con i procesamos el símbolo siguiente al que nos hace cambiar de estado
+    //Con i-1 procesamos el símbolo que nos hace cambiar de estado en el otro Autómata
+
 
     public void Replace(string symbol)
     {

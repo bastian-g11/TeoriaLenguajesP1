@@ -11,6 +11,8 @@ public class VariableSyntax
         string state = "IN";
         int index = _index;
         char character;
+        string error = null;
+        bool hasError = false;
 
         for (int i = index; i < line.Length; i++)
         {
@@ -56,11 +58,11 @@ public class VariableSyntax
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -89,11 +91,11 @@ public class VariableSyntax
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -119,12 +121,11 @@ public class VariableSyntax
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        Debug.Log("Entró a error, con este símbolo: " + character);
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
@@ -138,18 +139,24 @@ public class VariableSyntax
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        if (!hasError)
+                        {
+                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        }
+                        //state = "E";
                     }
                     break;
 
                 case "VAP":
 
                     //Se pasa solo la i para no procesar el = 
-                    AutomataController.instance.index = i ;
+
+                    AutomataController.instance.index = i;
+                    if (error != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.StackAutomata;
 
                 case "E":

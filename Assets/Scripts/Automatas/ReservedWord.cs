@@ -11,7 +11,8 @@ public class ReservedWord
         string state = "IN";
         int index = _index;
         char character;
-
+        string errors = null;
+  
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
@@ -96,7 +97,8 @@ public class ReservedWord
 
                     else if (Char.IsDigit(character))
                     {
-                        state = "E";
+                        errors = errors + "- La línea inicia de manera con un número\n";
+                        //state = "E";
                     }
 
                     else
@@ -155,11 +157,8 @@ public class ReservedWord
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- La línea contiene un símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -203,11 +202,8 @@ public class ReservedWord
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        Debug.Log("Llegó un símbolo raro en el tipo de dato");
+                        errors = errors + "- Llegó un símbolo inválido de dato\n";
                     }
                     break;
 
@@ -232,7 +228,7 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
                     }
 
                     else
@@ -241,7 +237,7 @@ public class ReservedWord
                          *va a mandar al estado de error, ya que sólo se
                          *aceptan los de arriba
                          * */
-                        state = "E";
+                        errors = "- La línea contiene un símbolo inválido en la declaración\n";
                     }
                     break;
 
@@ -282,7 +278,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
 
                     break;
@@ -323,7 +320,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -364,7 +362,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -405,7 +404,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -430,12 +430,14 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -460,11 +462,13 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
+                        //state = "E";
                     }
 
                     else
                     {
+                        errors = "- Declaración de variable con símbolo inválido\n";
                         state = "E";
                     }
                     break;
@@ -506,7 +510,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -547,7 +552,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -588,7 +594,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -613,12 +620,14 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -659,8 +668,8 @@ public class ReservedWord
 
                     else
                     {
-
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -701,7 +710,7 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        //state = "E";
                     }
                     break;
 
@@ -742,7 +751,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -767,12 +777,14 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -813,7 +825,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -854,7 +867,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -895,7 +909,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -936,7 +951,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -977,7 +993,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1002,12 +1019,14 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1048,7 +1067,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1089,7 +1109,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1130,7 +1151,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1155,12 +1177,14 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";      
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
 
                     break;
@@ -1202,7 +1226,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1243,7 +1268,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1284,7 +1310,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1325,7 +1352,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1366,7 +1394,8 @@ public class ReservedWord
 
                     else
                     {
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -1391,43 +1420,57 @@ public class ReservedWord
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "E";
+                        errors = "- La línea contiene uno símbolo inválido: +, -, *, /  \n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- Declaración de variable con símbolo inválido\n";
+                        //state = "E";
                     }
 
                     break;
 
                 case "EV":
                     Debug.Log("Es una variable");
-                    //Insertar creación de nodo ??
                     AutomataController.instance.index = i;
+                    //Insertar creación de nodo ??
+
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.VariableSyntax;
+
 
                 case "EVTP":
                     Debug.Log("Es una variable con tipo de dato");
-                    //Insertar creación de nodo ??
                     AutomataController.instance.index = i;
+
+                    //string tipo = line.Substring(index, i);
+                    //SinglyLinkedListController.instance.AddNode("tipo", tipo);
+                    //Debug.Log("Nodo: " + tipo);
+
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.DTVariableSyntax;
 
                 case "E":
                     Debug.Log("Entró a error en ReservedWord");
-                    //Instar eliminación de lista ??
-                    return AutomataType.Error;
+                    //return AutomataType.Error;
+                    break;
 
                 default:
                     Debug.Log("Algo raro pasa");
                     break;
             }
         }
-        //Debería ser error o None?
+
         return AutomataType.Error;
     }
 }

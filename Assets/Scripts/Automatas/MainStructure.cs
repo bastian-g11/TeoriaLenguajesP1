@@ -11,6 +11,7 @@ public class MainStructure
         string line = lineToRead;
         int index = _index;
         char character;
+        string error;
 
         for (int i = index; i < line.Length; i++)
         {
@@ -45,7 +46,10 @@ public class MainStructure
             else if (Char.IsDigit(character))
             {
                 Debug.Log("Entró a error en MainStructure");
-                return AutomataType.Error;
+                error = "- La línea empieza con número\n";
+                ErrorController.instance.SetErrorMessage(error);
+                ErrorController.instance.SetLineHasError(true);
+                //return AutomataType.Error;
             }
             else
             {
