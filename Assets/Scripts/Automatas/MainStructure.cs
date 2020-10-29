@@ -56,6 +56,9 @@ public class MainStructure
                 return AutomataType.Error;
             }
         }
+        error = "- Falta punto y coma (;)\n";
+        ErrorController.instance.SetErrorMessage(error);
+        ErrorController.instance.SetLineHasError(true);
         return AutomataType.None;
     }
 }

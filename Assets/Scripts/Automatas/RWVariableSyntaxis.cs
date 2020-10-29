@@ -10,7 +10,8 @@ public class RWVariableSyntaxis : MonoBehaviour
         string line = lineaToRead;
         string state = "IN";
         int index = _index;
-        char character; 
+        char character;
+        string errors = null;
 
         for (int i = index; i < line.Length; i++)
         {
@@ -91,21 +92,20 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
                     else if (Char.IsDigit(character))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -149,13 +149,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
+                        //state = "E";
                     }
                     break;
 
@@ -193,13 +196,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
+                        //state = "E";
                     }
                     break;
 
@@ -217,7 +223,11 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
                     }
 
                     //Operadores finales
@@ -225,16 +235,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -261,7 +269,8 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        state = "EV";
+
                     }
 
                     else if (Char.IsDigit(character))
@@ -271,7 +280,8 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
                     break;
@@ -306,9 +316,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -343,9 +359,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -380,9 +402,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -400,7 +428,10 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
                     }
 
                     //Operadores finales
@@ -408,12 +439,17 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
+
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -431,7 +467,10 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
                     }
 
                     //Operadores finales
@@ -439,12 +478,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -474,6 +515,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
@@ -481,7 +527,8 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -516,9 +563,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -553,9 +606,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -573,7 +632,10 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
                     }
 
                     //Operadores finales
@@ -581,12 +643,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -621,10 +685,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
 
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -659,9 +729,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -696,9 +773,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -716,7 +800,11 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
+
                     }
 
                     //Operadores finales
@@ -724,12 +812,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -764,9 +856,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -801,9 +899,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -838,9 +943,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -875,9 +987,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -912,9 +1029,15 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
                     break;
 
@@ -932,7 +1055,11 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
+
                     }
 
                     //Operadores finales
@@ -940,12 +1067,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -980,9 +1111,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1018,9 +1156,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1056,9 +1201,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1066,7 +1218,9 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     if (Char.IsLetter(character))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
 
                     else if (Char.IsDigit(character))
@@ -1076,7 +1230,10 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
                     }
 
                     //Operadores finales
@@ -1084,12 +1241,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
 
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
 
                     break;
@@ -1125,9 +1286,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1163,9 +1331,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1201,9 +1376,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1238,9 +1420,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1275,9 +1464,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "EV";
                     }
 
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
                     else
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
                     break;
 
@@ -1295,7 +1491,12 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "E";
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
+
+
                     }
 
                     //Operadores finales
@@ -1303,24 +1504,71 @@ public class RWVariableSyntaxis : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
                     {
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
                     }
 
                     else
                     {
-                        /*Si no llegó ninguno de los símbolos de arriba
-                         *va a mandar al estado de error, ya que sólo se
-                         *aceptan los de arriba
-                         * */
-                        state = "E";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
                     }
 
+                    break;
+
+                case "SS":
+                    Debug.Log("Entró espacio después de variable");
+                    if (character.Equals('='))
+                    {
+                        state = "EV";
+                    }
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+                    }
                     break;
 
                 case "EV":
                     Debug.Log("Es una variable");
                     AutomataController.instance.index = i;
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
                     return AutomataType.DTVariableSyntax;
+
+                case "VAP":
+                    Debug.Log("Va al de pila desde RW");
+                    AutomataController.instance.index = i;
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
+                    return AutomataType.StackAutomata;
+
+                case "RWVS2":
+                    Debug.Log("Es una variable, va a RWVS2 desde RWVS");
+                    AutomataController.instance.index = i;
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
+                    return AutomataType.RW2VariableSyntax;
 
                 case "E":
                     Debug.Log("Entró a error en RWV");

@@ -659,6 +659,7 @@ public class StackAutomata
             }
 
         }
+
         Debug.Log("Final de secuencia, esto quedó en el tope: " + stack.Peek());
 
         if (stack.Peek().Equals("CM"))
@@ -666,7 +667,7 @@ public class StackAutomata
             errors = errors + "- Falta cerrar comillas\n";
             ErrorController.instance.SetErrorMessage(errors);
             ErrorController.instance.SetLineHasError(true);
-            return AutomataType.MainStructure;
+            return AutomataType.Error;
         }
 
         else if (stack.Peek().Equals("VAE"))
@@ -680,13 +681,13 @@ public class StackAutomata
             return AutomataType.MainStructure;
         }
 
-        else if (stack.Peek().Equals("K") || stack.Peek().Equals("T") ||
-            stack.Peek().Equals("V") || stack.Peek().Equals("N") || stack.Peek().Equals("Z"))
-        {
-            errors = errors + "- Falta punto y coma (;) \n";
-            ErrorController.instance.SetErrorMessage(errors);
-            ErrorController.instance.SetLineHasError(true);
-        }
+        //else if (stack.Peek().Equals("K") || stack.Peek().Equals("T") ||
+        //    stack.Peek().Equals("V") || stack.Peek().Equals("N") || stack.Peek().Equals("Z"))
+        //{
+        //    errors = errors + "- Falta punto y coma (;) \n";
+        //    ErrorController.instance.SetErrorMessage(errors);
+        //    ErrorController.instance.SetLineHasError(true);
+        //}
         else
         {
             errors = errors + "- Hay un error al final de la línea \n- Falta punto y coma (;) \n";

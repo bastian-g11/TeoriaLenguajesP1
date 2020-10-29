@@ -58,10 +58,7 @@ public class VariableSyntax
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        error = "- El nombre de la variable empieza de manera incorrecta\n";
                         //state = "E";
                     }
                     break;
@@ -91,10 +88,8 @@ public class VariableSyntax
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -121,10 +116,8 @@ public class VariableSyntax
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -139,10 +132,8 @@ public class VariableSyntax
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
