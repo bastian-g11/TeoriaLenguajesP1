@@ -235,6 +235,10 @@ public class DTCVariableSyntax : MonoBehaviour
                 ErrorController.instance.SetLineHasError(true);
             }
         }
-        return AutomataType.MainStructure;
+
+        errors = errors + "- Expresión incompleta\n";
+        ErrorController.instance.SetErrorMessage(errors);
+        ErrorController.instance.SetLineHasError(true);
+        return AutomataType.Error;
     }
 }

@@ -1447,7 +1447,7 @@ public class ReservedWord
 
                 case "EVTP":
                     Debug.Log("Es una variable con tipo de dato");
-                    AutomataController.instance.index = i;
+                    AutomataController.instance.index = i - 1;
 
                     //string tipo = line.Substring(index, i);
                     //SinglyLinkedListController.instance.AddNode("tipo", tipo);

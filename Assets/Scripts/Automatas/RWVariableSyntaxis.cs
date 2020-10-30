@@ -1650,7 +1650,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     break;
 
                 case "SS":
-                    Debug.Log("Entró espacio después de variable");
                     if (character.Equals('='))
                     {
                         state = "EV";
@@ -1699,7 +1698,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                 case "RWVS2":
                     Debug.Log("Es una variable, va a RWVS2 desde RWVS");
-                    AutomataController.instance.index = i - 1; ;
+                    AutomataController.instance.index = i; 
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -1750,6 +1749,6 @@ public class RWVariableSyntaxis : MonoBehaviour
         errors = errors + "- Falta punto y coma (;) \n";
         ErrorController.instance.SetErrorMessage(errors);
         ErrorController.instance.SetLineHasError(true);
-        return AutomataType.MainStructure;
+        return AutomataType.Error;
     }
 }

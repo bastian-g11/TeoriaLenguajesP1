@@ -248,6 +248,10 @@ public class DTVariableSyntax : MonoBehaviour
                 ErrorController.instance.SetLineHasError(true);
             }
         }
-        return AutomataType.MainStructure;
+
+        errors = errors + "- Falta punto y coma (;) \n";
+        ErrorController.instance.SetErrorMessage(errors);
+        ErrorController.instance.SetLineHasError(true);
+        return AutomataType.Error;
     }
 }
