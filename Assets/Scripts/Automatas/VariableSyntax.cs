@@ -11,8 +11,7 @@ public class VariableSyntax
         string state = "IN";
         int index = _index;
         char character;
-        string error = null;
-        bool hasError = false;
+        string errors = null;
 
         for (int i = index; i < line.Length; i++)
         {
@@ -47,7 +46,6 @@ public class VariableSyntax
                     else if (character.Equals(' '))
                     {
                         state = "SS";
-                        Debug.Log("AAA");
                     }
 
                     else if (character.Equals('='))
@@ -58,7 +56,7 @@ public class VariableSyntax
 
                     else
                     {
-                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- Error en nombramiento de variable\n";
                         //state = "E";
                     }
                     break;
@@ -88,7 +86,7 @@ public class VariableSyntax
 
                     else
                     {
-                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- Error en nombramiento de variable\n";
 
                         //state = "E";
                     }
@@ -116,7 +114,7 @@ public class VariableSyntax
 
                     else
                     {
-                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- Error en nombramiento de variable\n";
 
                         //state = "E";
                     }
@@ -132,7 +130,7 @@ public class VariableSyntax
 
                     else
                     {
-                        error = "- El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- Error en nombramiento de variable\n";
 
                         //state = "E";
                     }
@@ -143,9 +141,9 @@ public class VariableSyntax
                     //Se pasa solo la i para no procesar el = 
 
                     AutomataController.instance.index = i;
-                    if (error != null)
+                    if (errors != null)
                     {
-                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetErrorMessage(errors);
                         ErrorController.instance.SetLineHasError(true);
                     }
                     return AutomataType.StackAutomata;
@@ -155,6 +153,10 @@ public class VariableSyntax
                     return AutomataType.Error;
             }
         }
+
+        errors = errors + "- Expresión incompleta\n";
+        ErrorController.instance.SetErrorMessage(errors);
+        ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
     }
 }

@@ -11,7 +11,7 @@ public class DTCVariableSyntax : MonoBehaviour
         string state = "IN";
         int index = _index;
         char character;
-        string error = null;
+        string errors = null;
         bool hasError = false;
 
         for (int i = index; i < line.Length; i++)
@@ -53,7 +53,7 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         if(!hasError)
                         {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         }
                         //state = "E";
                     }
@@ -97,7 +97,7 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         if (!hasError)
                         {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         }
                         //state = "E";
                     }
@@ -131,7 +131,7 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         if (!hasError)
                         {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         }
                         //state = "E";
                     }
@@ -165,7 +165,7 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         if (!hasError)
                         {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         }
                         //state = "E";
                     }
@@ -182,7 +182,7 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         if (!hasError)
                         {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
+                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         }
                     }
                     break;
@@ -195,19 +195,19 @@ public class DTCVariableSyntax : MonoBehaviour
                     Debug.Log("Vuelve al autómata principal");
                     AutomataController.instance.index = i - 1;
 
-                    if (error != null)
+                    if (errors != null)
                     {
-                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetErrorMessage(errors);
                         ErrorController.instance.SetLineHasError(true);
                     }
                     return AutomataType.MainStructure;
 
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
-                    AutomataController.instance.index = i;
-                    if (error != null)
+                    AutomataController.instance.index = i - 1;
+                    if (errors != null)
                     {
-                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetErrorMessage(errors);
                         ErrorController.instance.SetLineHasError(true);
                     }
                     return AutomataType.RW2VariableSyntax;
@@ -218,12 +218,23 @@ public class DTCVariableSyntax : MonoBehaviour
             }
         }
 
-        if (state.Equals("VAE"))
+        if (state.Equals("IN"))
         {
-            AutomataController.instance.index = line.Length - 1;
-            return AutomataType.MainStructure;
+            errors = errors + "- Expresión incompleta\n";
+            ErrorController.instance.SetErrorMessage(errors);
+            ErrorController.instance.SetLineHasError(true);
+            return AutomataType.Error;
         }
 
-        return AutomataType.Error;
+        else if (state.Equals("VAE"))
+        {
+            AutomataController.instance.index = line.Length - 1;
+            if (errors != null)
+            {
+                ErrorController.instance.SetErrorMessage(errors);
+                ErrorController.instance.SetLineHasError(true);
+            }
+        }
+        return AutomataType.MainStructure;
     }
 }

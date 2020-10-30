@@ -11,8 +11,7 @@ public class DTVariableSyntax : MonoBehaviour
         string state = "IN";
         int index = _index;
         char character;
-        string error = null;
-        bool hasError = false;
+        string errors = null;
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
@@ -51,16 +50,14 @@ public class DTVariableSyntax : MonoBehaviour
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 1");
-                        state = "VAE";
+                        state = "VAP";
                     }
 
                     else
                     {
                         Debug.Log("El nombre de la variable empieza de manera incorrecta");
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -102,15 +99,12 @@ public class DTVariableSyntax : MonoBehaviour
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 2");
-                        state = "VAE";
+                        state = "VAP";
                     }
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         //state = "E";
                     }
                     break;
@@ -142,15 +136,12 @@ public class DTVariableSyntax : MonoBehaviour
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 3");
-                        state = "VAE";
+                        state = "VAP";
                     }
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         //state = "E";
                     }
                     break;
@@ -187,10 +178,7 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         //state = "E";
                     }
                     break;
@@ -204,10 +192,7 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            error = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
                         //state = "E";
                     }
                     break;
@@ -219,19 +204,19 @@ public class DTVariableSyntax : MonoBehaviour
                 case "VAE":
                     Debug.Log("Vuelve al autómata principal");
                     AutomataController.instance.index = i - 1;
-                    if (error != null)
+                    if (errors != null)
                     {
-                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetErrorMessage(errors);
                         ErrorController.instance.SetLineHasError(true);
                     }
                     return AutomataType.MainStructure;
 
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
-                    AutomataController.instance.index = i;
-                    if (error != null)
+                    AutomataController.instance.index = i - 1;
+                    if (errors != null)
                     {
-                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetErrorMessage(errors);
                         ErrorController.instance.SetLineHasError(true);
                     }
                     return AutomataType.RW2VariableSyntax;
@@ -240,9 +225,9 @@ public class DTVariableSyntax : MonoBehaviour
                     Debug.Log("Va al autómata de pila");
                     //Se pasa solo la i para no procesar el = 
                     AutomataController.instance.index = i;
-                    if (error != null)
+                    if (errors != null)
                     {
-                        ErrorController.instance.SetErrorMessage(error);
+                        ErrorController.instance.SetErrorMessage(errors);
                         ErrorController.instance.SetLineHasError(true);
                     }
                     return AutomataType.StackAutomata;
@@ -253,16 +238,16 @@ public class DTVariableSyntax : MonoBehaviour
                     break;
             }
         }
+
+        AutomataController.instance.index = line.Length;
         if (state.Equals("VAE"))
         {
-            AutomataController.instance.index = line.Length - 1;
-            if (error != null)
+            if (errors != null)
             {
-                ErrorController.instance.SetErrorMessage(error);
+                ErrorController.instance.SetErrorMessage(errors);
                 ErrorController.instance.SetLineHasError(true);
             }
-            return AutomataType.MainStructure;
         }
-        return AutomataType.Error;
+        return AutomataType.MainStructure;
     }
 }

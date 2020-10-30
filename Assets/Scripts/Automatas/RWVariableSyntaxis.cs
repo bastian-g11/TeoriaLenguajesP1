@@ -141,7 +141,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -152,6 +152,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -188,7 +198,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -199,6 +209,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -224,7 +239,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(' '))
                     {
                         errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
-
                         //Se tuvo que agregar para seguir buscando errores
                         state = "SS";
                         //state = "E";
@@ -269,8 +283,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
-
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -308,7 +321,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -320,6 +333,17 @@ public class RWVariableSyntaxis : MonoBehaviour
                     {
                         state = "RWVS2";
                     }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
 
                     else
                     {
@@ -351,7 +375,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -362,6 +386,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+
+                    }
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -394,7 +423,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -406,6 +435,12 @@ public class RWVariableSyntaxis : MonoBehaviour
                     {
                         state = "RWVS2";
                     }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
 
                     else
                     {
@@ -512,13 +547,19 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
                     }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
 
                     else if (Char.IsDigit(character))
                     {
@@ -555,7 +596,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -566,6 +607,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -598,7 +644,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -609,6 +655,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -677,7 +728,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -688,6 +739,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -721,7 +777,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -732,6 +788,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -765,7 +826,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -776,6 +837,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -848,7 +914,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -859,6 +925,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -891,7 +962,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -902,6 +973,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -935,7 +1011,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -946,6 +1022,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -979,7 +1060,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -991,6 +1072,12 @@ public class RWVariableSyntaxis : MonoBehaviour
                     {
                         state = "RWVS2";
                     }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
@@ -1021,7 +1108,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1032,6 +1119,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1103,7 +1195,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1114,6 +1206,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1148,7 +1245,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1159,6 +1256,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1193,7 +1295,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1204,6 +1306,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1278,7 +1385,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1289,6 +1396,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1323,7 +1435,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1334,6 +1446,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1368,7 +1485,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1379,6 +1496,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1412,7 +1534,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1423,6 +1545,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1456,7 +1583,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                     else if (character.Equals(' '))
                     {
-                        state = "EV";
+                        state = "SS";
                     }
 
                     else if (Char.IsDigit(character))
@@ -1467,6 +1594,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
                     }
 
                     else
@@ -1533,6 +1665,11 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "RWVS2";
                     }
 
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
@@ -1542,7 +1679,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                 case "EV":
                     Debug.Log("Es una variable");
-                    AutomataController.instance.index = i;
+                    AutomataController.instance.index = i - 1; ;
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -1562,7 +1699,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                 case "RWVS2":
                     Debug.Log("Es una variable, va a RWVS2 desde RWVS");
-                    AutomataController.instance.index = i;
+                    AutomataController.instance.index = i - 1; ;
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -1579,6 +1716,40 @@ public class RWVariableSyntaxis : MonoBehaviour
                     break;
             }
         }
-        return AutomataType.None;
+
+
+        AutomataController.instance.index = line.Length;
+
+        if(state.Equals("VAE"))
+        {
+            Debug.Log("Vuelve al autómata principal, desde RWVS");
+            if (errors != null)
+            {
+                ErrorController.instance.SetErrorMessage(errors);
+                ErrorController.instance.SetLineHasError(true);
+            }
+            return AutomataType.MainStructure;
+        }
+
+        else if (state.Equals("T1") || state.Equals("T2") || state.Equals("F2")
+            || state.Equals("L2") || state.Equals("E2") || state.Equals("G") 
+            || state.Equals("R2") || state.Equals("E3"))
+        {
+            errors = errors + "- Error en declaración, " +
+             "nombre de variable contiene palabra reservada\n";
+        }
+
+        else if (state.Equals("IN"))
+        {
+            errors = errors + "- Expresión incompleta\n";
+            ErrorController.instance.SetErrorMessage(errors);
+            ErrorController.instance.SetLineHasError(true);
+            return AutomataType.Error;
+        }
+
+        errors = errors + "- Falta punto y coma (;) \n";
+        ErrorController.instance.SetErrorMessage(errors);
+        ErrorController.instance.SetLineHasError(true);
+        return AutomataType.MainStructure;
     }
 }

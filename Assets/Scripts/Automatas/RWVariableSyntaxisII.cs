@@ -1645,7 +1645,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                 case "EV":
                     Debug.Log("Es una variable");
-                    AutomataController.instance.index = i;
+                    AutomataController.instance.index = i - 1;
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -1699,7 +1699,24 @@ public class RWVariableSyntaxisII : MonoBehaviour
             }
         }
 
-        AutomataController.instance.index = line.Length - 1;
+        AutomataController.instance.index = line.Length;
+
+        if (state.Equals("T1") || state.Equals("T2") || state.Equals("F2")
+            || state.Equals("L2") || state.Equals("E2") || state.Equals("G")
+            || state.Equals("R2") || state.Equals("E3"))
+        {
+            errors = errors + "- Error en declaración, " +
+             "nombre de variable contiene palabra reservada\n";
+        }
+
+        if (state.Equals("IN"))
+        {
+            errors = errors + "- Expresión incompleta\n";
+            ErrorController.instance.SetErrorMessage(errors);
+            ErrorController.instance.SetLineHasError(true);
+            return AutomataType.Error;
+        }
+
         if (errors != null)
         {
             ErrorController.instance.SetErrorMessage(errors);
