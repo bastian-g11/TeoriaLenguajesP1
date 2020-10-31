@@ -56,6 +56,9 @@ public class MainStructure
                 return AutomataType.Error;
             }
         }
+
+        SinglyLinkedListController.instance.singlyLinkedList.TraverseLinkedList();
+        //Reiniciar lista ligada
         return AutomataType.None;
     }
 }

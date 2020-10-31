@@ -29,6 +29,7 @@ public class SinglyLinkedList
         while(node != null)
         {
             //Lo que vayamos a hacer
+            Debug.Log("Nodo: " + node.GetValue());
             node = node.GetNextNode();
         }
     }

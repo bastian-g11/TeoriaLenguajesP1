@@ -188,6 +188,7 @@ public class DTVariableSyntax : MonoBehaviour
                     if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 5");
+                        state = "VAP";
                     }
 
                     else
@@ -204,6 +205,9 @@ public class DTVariableSyntax : MonoBehaviour
                 case "VAE":
                     Debug.Log("Vuelve al autómata principal");
                     AutomataController.instance.index = i - 1;
+
+                    InsertarNodo(index, i, line);
+
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -214,6 +218,9 @@ public class DTVariableSyntax : MonoBehaviour
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
                     AutomataController.instance.index = i - 1;
+
+                    InsertarNodo(index, i, line);
+
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -224,6 +231,9 @@ public class DTVariableSyntax : MonoBehaviour
                 case "VAP":
                     Debug.Log("Va al autómata de pila");
                     //Se pasa solo la i para no procesar el = 
+
+                    InsertarNodo(index,  i,  line);
+
                     AutomataController.instance.index = i;
                     if (errors != null)
                     {
@@ -254,5 +264,17 @@ public class DTVariableSyntax : MonoBehaviour
         ErrorController.instance.SetErrorMessage(errors);
         ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
+    }
+
+    public void InsertarNodo(int index, int i, string line)
+    {
+        int length = (i - 1) - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("tipo", variable);
+        Debug.Log("<color=green> Nodo: </color>" + variable);
+        Debug.Log("<color=blue> Primer Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetValue());
+        Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetNextNode());
     }
 }

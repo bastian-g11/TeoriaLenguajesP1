@@ -1449,9 +1449,15 @@ public class ReservedWord
                     Debug.Log("Es una variable con tipo de dato");
                     AutomataController.instance.index = i - 1;
 
-                    //string tipo = line.Substring(index, i);
-                    //SinglyLinkedListController.instance.AddNode("tipo", tipo);
-                    //Debug.Log("Nodo: " + tipo);
+                    int length = (i - 1) - index;
+                    string tipo = line.Substring(index, length);
+                    SinglyLinkedListController.instance.AddNode("tipo", tipo);
+                    Debug.Log("<color=green> Nodo: </color>" + tipo);
+                    Debug.Log("<color=blue> Primer Nodo: </color>"+SinglyLinkedListController.instance.
+                        singlyLinkedList.GetFirstNode().GetValue());
+                    Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
+                        singlyLinkedList.GetFirstNode().GetNextNode());
+
 
                     if (errors != null)
                     {
