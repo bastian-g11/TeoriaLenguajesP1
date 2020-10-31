@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
     {
         if (ErrorController.instance.GetLineHasError())
         {
-            errorText.text = "Error en la línea: " + lineNumber + " \n" +
+            errorText.text = errorText.text + "Errores en la línea: " + lineNumber + " \n" +
                         ErrorController.instance.GetLineErrors(); ;
             ErrorController.instance.RestartErrors();
         }

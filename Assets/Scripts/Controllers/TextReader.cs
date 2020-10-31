@@ -50,10 +50,9 @@ public class TextReader : MonoBehaviour
         //AutomataType nextAutomata = AutomataController.instance.nextAutomata;
         AutomataType nextAutomata = AutomataType.MainStructure;
 
-        int ii = 0;
-        while(ii<1)//true)
+        
+        while(true)
         {
-            ii+=1;
             //Reinicio todo
             aLine = strReader.ReadLine();
             if (aLine == null) break;

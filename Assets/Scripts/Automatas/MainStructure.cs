@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MainStructure 
+public class MainStructure
 {
 
     public AutomataType ReadStructure(string lineToRead, int _index)
@@ -29,7 +29,7 @@ public class MainStructure
             if (Char.IsLetter(character))
             {
                 AutomataController.instance.index = i;
-                Debug.Log("Entró a palabras reservadas");
+                Debug.Log("<color=green> Entró a palabras reservadas </color>");
                 Debug.Log("Entró con: " + character);
                 return AutomataType.ReservedWord;
             }

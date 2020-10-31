@@ -1719,7 +1719,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
         AutomataController.instance.index = line.Length;
 
-        if(state.Equals("VAE"))
+        if(state.Equals("VAE") || line[line.Length - 1].Equals(';'))
         {
             Debug.Log("Vuelve al autómata principal, desde RWVS");
             if (errors != null)

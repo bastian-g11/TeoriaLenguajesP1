@@ -178,7 +178,7 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- El nombre de la variable es incorrecto\n";
                         //state = "E";
                     }
                     break;
@@ -192,7 +192,7 @@ public class DTVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        errors = "- El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- El nombre de la variable es incorrecto\n";
                         //state = "E";
                     }
                     break;
@@ -240,13 +240,14 @@ public class DTVariableSyntax : MonoBehaviour
         }
 
         AutomataController.instance.index = line.Length;
-        if (state.Equals("VAE"))
+        if (state.Equals("VAE") || line[line.Length - 1].Equals(';'))
         {
             if (errors != null)
             {
                 ErrorController.instance.SetErrorMessage(errors);
                 ErrorController.instance.SetLineHasError(true);
             }
+            return AutomataType.MainStructure;
         }
 
         errors = errors + "- Falta punto y coma (;) \n";

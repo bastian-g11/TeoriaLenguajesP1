@@ -12,7 +12,6 @@ public class DTCVariableSyntax : MonoBehaviour
         int index = _index;
         char character;
         string errors = null;
-        bool hasError = false;
 
         for (int i = index; i < line.Length; i++)
         {
@@ -51,10 +50,9 @@ public class DTCVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        if(!hasError)
-                        {
-                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        Debug.Log("aaaaaaaaaaaaaaaaaaaasx: " + character + line[i - 1]);
+                        errors = "- DTC1 El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -95,10 +93,8 @@ public class DTCVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- DTC2 El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -129,10 +125,8 @@ public class DTCVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- DTC3 El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -163,10 +157,8 @@ public class DTCVariableSyntax : MonoBehaviour
 
                     else
                     {
-                        if (!hasError)
-                        {
-                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- DTC4 El nombre de la variable empieza de manera incorrecta\n";
+
                         //state = "E";
                     }
                     break;
@@ -180,10 +172,8 @@ public class DTCVariableSyntax : MonoBehaviour
                     }
                     else
                     {
-                        if (!hasError)
-                        {
-                            errors = "- El nombre de la variable empieza de manera incorrecta\n";
-                        }
+                        errors = "- DTC5 El nombre de la variable empieza de manera incorrecta\n";
+
                     }
                     break;
 
@@ -217,6 +207,7 @@ public class DTCVariableSyntax : MonoBehaviour
                     return AutomataType.Error;
             }
         }
+        AutomataController.instance.index = line.Length - 1;
 
         if (state.Equals("IN"))
         {
@@ -226,14 +217,14 @@ public class DTCVariableSyntax : MonoBehaviour
             return AutomataType.Error;
         }
 
-        else if (state.Equals("VAE"))
+        else if (state.Equals("VAE") || line[line.Length-1].Equals(';'))
         {
-            AutomataController.instance.index = line.Length - 1;
             if (errors != null)
             {
                 ErrorController.instance.SetErrorMessage(errors);
                 ErrorController.instance.SetLineHasError(true);
             }
+            return AutomataType.MainStructure;
         }
 
         errors = errors + "- Expresión incompleta\n";
