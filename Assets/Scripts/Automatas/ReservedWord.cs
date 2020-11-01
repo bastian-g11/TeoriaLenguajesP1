@@ -84,7 +84,6 @@ public class ReservedWord
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     //Operadores finales
@@ -92,7 +91,6 @@ public class ReservedWord
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 

@@ -10,6 +10,8 @@ public class RWVariableSyntaxis : MonoBehaviour
         string line = lineaToRead;
         string state = "IN";
         int index = _index;
+        int inicio = 0;
+        int length = 0;
         char character;
         string errors = null;
 
@@ -35,42 +37,55 @@ public class RWVariableSyntaxis : MonoBehaviour
                     {
                         state = "I12";
                         Debug.Log("ESTOY EN EL ESTADO I12");
+                        inicio = i;
                     }
 
                     else if (character.Equals('f'))
                     {
                         state = "F1";
                         Debug.Log("ESTOY EN EL ESTADO F1");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('e'))
                     {
                         state = "E1";
                         Debug.Log("ESTOY EN EL ESTADO E1");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('S'))
                     {
                         state = "S2";
                         Debug.Log("ESTOY EN EL ESTADO S2");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('b'))
                     {
                         state = "B1";
                         Debug.Log("ESTOY EN EL ESTADO B1");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('c'))
                     {
                         state = "C";
                         Debug.Log("ESTOY EN EL ESTADO C");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('d'))
                     {
                         state = "D";
                         Debug.Log("ESTOY EN EL ESTADO D");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals(' '))
@@ -107,6 +122,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "I12":
@@ -171,6 +187,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "N1":
@@ -1392,6 +1409,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1825,9 +1843,11 @@ public class RWVariableSyntaxis : MonoBehaviour
     public void InsertarVariable(int index, int i, string line)
     {
         int length = i - index;
+        string s = AutomataController.instance.exp;
         string variable = line.Substring(index, length);
-        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        SinglyLinkedListController.instance.AddNode("Variable", s + variable);
         UIController.instance.CreateUINode();
+        AutomataController.instance.exp = "";
     }
 
     public void InsertarOperador(int i, string line)
