@@ -86,6 +86,7 @@ public class DTVariableSyntax : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "EC";
+                        InsertarVariable(index, i, line);
                         InsertarOperador(i, line);
                     }
 
