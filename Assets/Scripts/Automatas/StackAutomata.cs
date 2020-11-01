@@ -343,8 +343,6 @@ public class StackAutomata
                     else
                     {
                         errors = errors + "- Error en sintaxis de alguna variable\n";
-                        Debug.Log("*************************************");
-                        Debug.Log("<color=yellow>ESTE ES EL ERROR: </color>" + character);
                         //Replace("ER");
                     }
                     break;

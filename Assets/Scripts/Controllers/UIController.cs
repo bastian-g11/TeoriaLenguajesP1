@@ -10,8 +10,11 @@ public class UIController : MonoBehaviour
     public string lineaTexto;
     public GameObject go_uiNode;
     public Node createdNode;
-    public Transform nodeContainer;
-    public int distance = 2;
+    public Transform contenedor;
+    public GameObject prefabListContainer;
+    public GameObject listContainer;
+    public int distanceX = 2;
+    public int distanceY = 0;
 
 
     #region singleton
@@ -50,10 +53,17 @@ public class UIController : MonoBehaviour
 
     public void CreateUINode()
     {
-        GameObject _go = Instantiate(go_uiNode, Vector3.right * distance, Quaternion.identity,nodeContainer);
-        distance = distance + 5;
+        GameObject _go = Instantiate(go_uiNode, new Vector3(1 * distanceX, 1 * -distanceY, 0), Quaternion.identity, listContainer.transform);
+        distanceX = distanceX + 5;
         UINode _uiNode = _go.GetComponent<UINode>();
         createdNode.SetUINode(_uiNode);
         _uiNode.SetUINode(createdNode);
+    }
+
+    public void CreateContainer()
+    {
+        distanceX = 2;
+        listContainer = Instantiate(prefabListContainer, contenedor);
+        distanceY = distanceY + 5;
     }
 }

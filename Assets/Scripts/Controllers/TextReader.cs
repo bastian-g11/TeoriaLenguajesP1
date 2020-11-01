@@ -63,6 +63,7 @@ public class TextReader : MonoBehaviour
             lineNumber += 1;
             SetLinkedList();
 
+            UIController.instance.CreateContainer();
             Debug.Log(aLine);
             Debug.Log("*************************************************");
             
@@ -135,8 +136,9 @@ public class TextReader : MonoBehaviour
             UIController.instance.SetErrorText(lineNumber);
             if (lineHasError)
             {
+                Debug.Log("<color=yellow> Entroooooooooooooooooooooo </color>");
+                Destroy(UIController.instance.listContainer);
                 ResetLinkedList();
-               
             }
             else
             {

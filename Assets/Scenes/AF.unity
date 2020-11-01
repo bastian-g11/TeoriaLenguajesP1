@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &70213037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70213038}
+  m_Layer: 0
+  m_Name: Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70213038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70213037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.244207, y: -2.8900917, z: 0.5502691}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &245518258
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 611059797}
   m_Layer: 0
-  m_Name: LinkedLists
+  m_Name: prefabListContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +259,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -796,8 +826,11 @@ MonoBehaviour:
   lineaTexto: 
   go_uiNode: {fileID: 5354383616316872921, guid: 80b6a63e05eb5df468566f8998be4340,
     type: 3}
-  nodeContainer: {fileID: 611059797}
-  distance: 2
+  contenedor: {fileID: 70213038}
+  prefabListContainer: {fileID: 611059796}
+  listContainer: {fileID: 0}
+  distanceX: 2
+  distanceY: 0
 --- !u!114 &977420932
 MonoBehaviour:
   m_ObjectHideFlags: 0

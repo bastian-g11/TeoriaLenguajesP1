@@ -1657,6 +1657,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "EV";
+                        
                     }
 
                     else
@@ -1674,13 +1675,12 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     //if (line[i].Equals(','))
                     //{
-                    //    AutomataController.instance.index = i + 1;
-                    //    InsertarNodo(index, i + 1, line);
+                    //    InsertarVariable(index, i, line);
+                    //    InsertarOperador(i, line);
                     //}
                     //else
                     //{
-                    //    AutomataController.instance.index = i - 1;
-                    //    InsertarNodo(index, i, line);
+                    //    InsertarVariable(index, i, line);
                     //}
 
                     if (errors != null)
