@@ -136,13 +136,9 @@ public class TextReader : MonoBehaviour
             UIController.instance.SetErrorText(lineNumber);
             if (lineHasError)
             {
-                Debug.Log("<color=yellow> Entroooooooooooooooooooooo </color>");
                 Destroy(UIController.instance.listContainer);
+                UIController.instance.distanceY = UIController.instance.distanceY - 5;
                 ResetLinkedList();
-            }
-            else
-            {
-                //Muestre la LG
             }
         }
 

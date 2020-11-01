@@ -10,7 +10,13 @@ public class UIController : MonoBehaviour
     public string lineaTexto;
     public GameObject go_uiNode;
     public Node createdNode;
-    public Transform contenedor;
+    public GameObject errorsCanvas;
+    public GameObject listsCanvas;
+    public Vector3 cameraPosition;
+    public CameraMovement cameraMovement;
+
+    public GameObject temporalContainerPrefab;
+    public GameObject temporalContainer;
     public GameObject prefabListContainer;
     public GameObject listContainer;
     public int distanceX = 2;
@@ -38,6 +44,8 @@ public class UIController : MonoBehaviour
         Debug.Log(lineaTexto);
         AutomataController.instance.index = 0;
         errorText.text = " ";
+        Destroy(temporalContainer);
+        temporalContainer = Instantiate(temporalContainerPrefab);
         TextReader.instance.Recorrer(lineaTexto);
     }
 
@@ -49,6 +57,23 @@ public class UIController : MonoBehaviour
                         ErrorController.instance.GetLineErrors(); ;
             ErrorController.instance.RestartErrors();
         }
+    }
+
+    public void ShowLinkedLists()
+    {
+        Camera.main.transform.position = cameraPosition;
+        temporalContainer.SetActive(true);
+        errorsCanvas.SetActive(false);
+        listsCanvas.SetActive(true);
+        cameraMovement.enabled = true;
+    }
+
+    public void ShowLineErrors()
+    {
+        temporalContainer.SetActive(false);
+        errorsCanvas.SetActive(true);
+        listsCanvas.SetActive(false);
+        cameraMovement.enabled = false;
     }
 
     public void CreateUINode()
@@ -63,7 +88,7 @@ public class UIController : MonoBehaviour
     public void CreateContainer()
     {
         distanceX = 2;
-        listContainer = Instantiate(prefabListContainer, contenedor);
+        listContainer = Instantiate(prefabListContainer, temporalContainer.transform);
         distanceY = distanceY + 5;
     }
 }

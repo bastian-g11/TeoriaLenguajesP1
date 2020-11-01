@@ -60,10 +60,7 @@ public class MainStructure
                 return AutomataType.Error;
             }
         }
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        Debug.Log(SinglyLinkedListController.instance.singlyLinkedList);
         SinglyLinkedListController.instance.singlyLinkedList.TraverseLinkedList();
-        //Reiniciar lista ligada
         return AutomataType.None;
     }
 }
