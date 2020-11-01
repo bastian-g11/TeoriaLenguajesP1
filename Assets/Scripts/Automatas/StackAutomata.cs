@@ -42,6 +42,7 @@ public class StackAutomata
                     if (Char.IsLetter(character) || character.Equals('$') || character.Equals('_'))
                     {
                         Replace("V");
+
                     }
 
                     else if (Char.IsDigit(character))
@@ -52,11 +53,13 @@ public class StackAutomata
                     else if (character.Equals('"') || character.Equals('\''))
                     {
                         Replace("CM");
+                        inicio = i;
                     }
 
                     else if (character.Equals('+') || character.Equals('-')) 
                     {
                         Replace("-");
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
@@ -103,7 +106,6 @@ public class StackAutomata
                     else
                     {
                         errors = errors + "- La asignación tiene 2 operadores seguidos";
-
                         //Replace("ER");
                     }
                     break;
@@ -229,48 +231,72 @@ public class StackAutomata
                     else if (character.Equals('+'))
                     {
                         Replace("+");
-                        InsertarClase(inicio, i, line, "Variable");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('-'))
                     {
                         Replace("-");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         Replace("S");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('<') || character.Equals('>') || character.Equals('!'))
                     {
                         Replace("B");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('='))
                     {
                         Replace("=");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('|'))
                     {
                         Replace("|");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('&'))
                     {
                         Replace("&");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals(';') || character.Equals(','))
                     {
                         Replace("VAE");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
                     {
                         Replace("K");
                         Debug.Log("Entró espacio en el de pila, después de una variable");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        inicio = i;
                     }
                     else
                     {
@@ -290,11 +316,17 @@ public class StackAutomata
                     else if (character.Equals('+'))
                     {
                         Replace("+");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('-'))
                     {
                         Replace("-");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('.'))
@@ -305,32 +337,49 @@ public class StackAutomata
                     else if (character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         Replace("S");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('<') || character.Equals('>') || character.Equals('!'))
                     {
                         Replace("B");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('='))
                     {
                         Replace("=");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('|'))
                     {
                         Replace("|");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals('&'))
                     {
                         Replace("&");
+                        //InsertarClase(inicio, i, line, "Número");
+                        InsertarOperador(i, line);
+                        //inicio = i;
                     }
 
                     else if (character.Equals(' '))
                     {
                         Replace("K");
                         Debug.Log("Entró espacio en el de pila, después de un #");
+                        //InsertarClase(inicio, i, line, "Número");
+                        //inicio = i;
                     }
 
                     else if (character.Equals('E') || character.Equals('e'))
@@ -343,6 +392,8 @@ public class StackAutomata
                         Debug.Log("Simbolo: "+character);
                         Debug.Log("índice: "+i);
                         Replace("VAE");
+                        //InsertarClase(inicio, i, line, "Variable");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -359,6 +410,8 @@ public class StackAutomata
                     if(character.Equals('"') || character.Equals('\''))
                     {
                         stack.Pop();
+                        InsertarClase(inicio, i + 1, line, "Término");
+                        inicio = i;
                     }
                     break;
 
@@ -377,6 +430,7 @@ public class StackAutomata
                     else if (character.Equals('"') || character.Equals('\''))
                     {
                         Replace("CM");
+
                     }
 
                     else if (character.Equals('.'))
@@ -493,6 +547,7 @@ public class StackAutomata
                     else if (character.Equals('='))
                     {
                         Replace("W");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -509,6 +564,7 @@ public class StackAutomata
                     if (character.Equals('='))
                     {
                         Replace("W");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -524,6 +580,7 @@ public class StackAutomata
                     if (character.Equals('&'))
                     {
                         Replace("W");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -540,6 +597,7 @@ public class StackAutomata
                     if (character.Equals('|'))
                     {
                         Replace("W");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -559,11 +617,13 @@ public class StackAutomata
                     else if (character.Equals('+'))
                     {
                         Replace("Y");
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals('-'))
                     {
                         Replace("Y");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -599,36 +659,50 @@ public class StackAutomata
                     else if (character.Equals('+'))
                     {
                         Replace("+");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals('-'))
                     {
                         Replace("-");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         Replace("S");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals('<') || character.Equals('>') || character.Equals('!'))
                     {
                         Replace("B");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals('='))
                     {
                         Replace("=");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals('|'))
                     {
                         Replace("|");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals('&'))
                     {
                         Replace("&");
+                        InsertarOperador(i, line);
+
                     }
 
                     else if (character.Equals(' '))
@@ -639,6 +713,7 @@ public class StackAutomata
                     else if (character.Equals(';') || character.Equals(','))
                     {
                         Replace("VAE");
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -716,7 +791,8 @@ public class StackAutomata
 
     public void InsertarClase(int index, int i, string line, string clase)
     {
-        string operador = line.Substring(i, 1);
+        int length = i - index;
+        string operador = line.Substring(index, length);
         SinglyLinkedListController.instance.AddNode(clase, operador);
         UIController.instance.CreateUINode();
     }
