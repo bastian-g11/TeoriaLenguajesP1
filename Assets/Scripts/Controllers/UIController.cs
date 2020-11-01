@@ -44,6 +44,7 @@ public class UIController : MonoBehaviour
         Debug.Log(lineaTexto);
         AutomataController.instance.index = 0;
         errorText.text = " ";
+        distanceY = 0;
         Destroy(temporalContainer);
         temporalContainer = Instantiate(temporalContainerPrefab);
         TextReader.instance.Recorrer(lineaTexto);

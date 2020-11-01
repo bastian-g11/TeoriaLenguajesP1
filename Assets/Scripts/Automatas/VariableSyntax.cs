@@ -49,7 +49,6 @@ public class VariableSyntax
                     {
                         state = "SS";
                         InsertarVariable(index, i, line);
-                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals('='))
@@ -103,8 +102,8 @@ public class VariableSyntax
 
                 case "SS":
                     Debug.Log("Entró a SS");
-                    if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/'))
+                    if(character.Equals('+') || character.Equals('-') ||
+                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
                         InsertarOperador(i, line);
@@ -174,9 +173,11 @@ public class VariableSyntax
     public void InsertarVariable(int index, int i, string line)
     {
         int length = i - index;
+        string s = AutomataController.instance.exp;
         string variable = line.Substring(index, length);
-        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        SinglyLinkedListController.instance.AddNode("Variable", s + variable);
         UIController.instance.CreateUINode();
+        AutomataController.instance.exp = "";
     }
 
     public void InsertarOperador(int i, string line)

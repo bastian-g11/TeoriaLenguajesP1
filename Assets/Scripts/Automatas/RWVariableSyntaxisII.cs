@@ -1671,17 +1671,40 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                 case "EV":
                     Debug.Log("Es una variable");
-                    AutomataController.instance.index = i;
+                    
+                    /*Cuando detecta que lo que lo trajo acá fue una coma
+                     * Lo que hace es que inserta la coma y la variable y pasa i
+                     * para que se analice lo que sigue después de la coma, 
+                     * pero si lo que lo trajo acá no fue una coma, significa que fue 
+                     * porque encontró una letra diferente a las reservadas 
+                     * */
+                    if (line[i - 1].Equals(','))
+                    {
+                        AutomataController.instance.index = i;
+                        InsertarVariable(index, i - 1, line); 
+                        InsertarOperador(i - 1, line);
+                        return AutomataType.RW2VariableSyntax;
+                    }
 
-                    //if (line[i].Equals(','))
-                    //{
-                    //    InsertarVariable(index, i, line);
-                    //    InsertarOperador(i, line);
-                    //}
-                    //else
-                    //{
-                    //    InsertarVariable(index, i, line);
-                    //}
+                    AutomataController.instance.index = i - 1;
+
+                    //
+                        if(line[i - 1].Equals(';'))
+                    {
+                        InsertarVariable(index, i - 1, line);
+                        InsertarOperador(i - 1, line);
+                        AutomataController.instance.index = i;
+                        return AutomataType.MainStructure;
+                    }
+
+                    if(character.Equals(';'))
+                    {
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
+                        AutomataController.instance.index = i;
+                        return AutomataType.MainStructure;
+                    }
+                    //
 
                     if (errors != null)
                     {
@@ -1695,7 +1718,6 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     Debug.Log("Vuelve al autómata principal");
 
                     AutomataController.instance.index = i - 1;
-                    //InsertarNodo(index, i, line);
 
                     if (errors != null)
                     {

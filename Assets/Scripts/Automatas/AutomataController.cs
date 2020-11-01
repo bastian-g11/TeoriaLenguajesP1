@@ -6,6 +6,7 @@ public class AutomataController : MonoBehaviour
 {
     public int index;
     public AutomataType nextAutomata;
+    public string exp = "";
 
     #region Automatas
     MainStructure mc;

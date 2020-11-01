@@ -179,7 +179,8 @@ public class StackAutomata
                     else if (character.Equals(';') || character.Equals(','))
                     {
                         Replace("VAE");
-                        InsertarOperador(i, line);
+                        InsertarSeparador(i, line);
+
                         inicio = i;
                     }
 
@@ -250,7 +251,8 @@ public class StackAutomata
                     else if (character.Equals(';') || character.Equals(','))
                     {
                         Replace("VAE");
-                        InsertarOperador(i, line);
+                        InsertarSeparador(i, line);
+
                         inicio = i;
                     }
 
@@ -329,7 +331,8 @@ public class StackAutomata
                     {
                         Replace("VAE");
                         InsertarClase(inicio, i, line, "Variable");
-                        InsertarOperador(i, line);
+                        InsertarSeparador(i, line);
+
                     }
 
                     else if (character.Equals(' '))
@@ -433,8 +436,9 @@ public class StackAutomata
                         Debug.Log("Simbolo: "+character);
                         Debug.Log("índice: "+i);
                         Replace("VAE");
-                        InsertarClase(inicio, i, line, "Variable");
-                        InsertarOperador(i, line);
+                        InsertarClase(inicio, i, line, "Número");
+                                                InsertarSeparador(i, line);
+
                         inicio = i;
                     }
 
@@ -614,6 +618,13 @@ public class StackAutomata
                         InsertarOperador(i, line);
                     }
 
+                    else if (character.Equals(' '))
+                    {
+                        Replace("W");
+                        Debug.Log("Entró espacio en el de pila, después de un operador");
+                        inicio = i;
+                    }
+
                     else
                     {
                         errors = errors + "- Símbolo inesperado luego de operador booleano\n";
@@ -780,7 +791,7 @@ public class StackAutomata
                     {
                         Replace("VAE");
                         InsertarClase(inicio, i, line, "Número");
-                        InsertarOperador(i, line);
+                        InsertarSeparador(i, line);
                     }
 
                     else
@@ -868,6 +879,13 @@ public class StackAutomata
     {
         string operador = line.Substring(i, 1);
         SinglyLinkedListController.instance.AddNode("Operador", operador);
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarSeparador(int i, string line)
+    {
+        string operador = line.Substring(i, 1);
+        SinglyLinkedListController.instance.AddNode("Separador", operador);
         UIController.instance.CreateUINode();
     }
 }

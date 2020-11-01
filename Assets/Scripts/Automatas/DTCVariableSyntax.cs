@@ -79,21 +79,22 @@ public class DTCVariableSyntax : MonoBehaviour
                     else if (character.Equals(','))
                     {
                         state = "EC";
-                        InsertarVariable(index, i, line);
+                        //index-1 para que tome el símbolo que estaba antes de este (que se procesó en RWVS2)
+                        InsertarVariable(index - 1, i, line);
                         InsertarSeparador(i, line);
                     }
 
                     else if (character.Equals(' '))
                     {
                         state = "SS";
-                        InsertarVariable(index, i, line);
+                        InsertarVariable(index - 1, i, line);
                     }
 
                     else if (character.Equals(';'))
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
-                        InsertarVariable(index, i, line);
+                        InsertarVariable(index - 1, i, line);
                         InsertarSeparador(i, line);
                     }
 
@@ -190,8 +191,6 @@ public class DTCVariableSyntax : MonoBehaviour
 
                     AutomataController.instance.index = i - 1;
 
-                    //InsertarNodo(index, i, line);
-
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -201,17 +200,11 @@ public class DTCVariableSyntax : MonoBehaviour
 
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
+                    /*i-1 para coger lo que está justo después de la coma, ya que cuando 
+                    *se detecta una coma, se avanza y se va a EC, y luego en EC a RWVS2
+                    * por lo que queremos justo lo que está cuando estabamos en EC
+                    * */
                     AutomataController.instance.index = i - 1;
-                    
-                    //if (line[i].Equals(','))
-                    //{
-                    //    InsertarNodo(index, i - 1, line);
-                    //}
-                    //else
-                    //{
-                    //    InsertarNodo(index, i, line);
-                    //}
-
 
                     if (errors != null)
                     {
@@ -242,10 +235,11 @@ public class DTCVariableSyntax : MonoBehaviour
                 ErrorController.instance.SetErrorMessage(errors);
                 ErrorController.instance.SetLineHasError(true);
             }
-
-            InsertarVariable(index, line.Length - 1, line);
-            InsertarSeparador(line.Length, line);
-            //InsertarNodo(index, line.Length - 1, line);
+            
+            //
+            //InsertarVariable(index, line.Length - 1, line);
+            //InsertarSeparador(line.Length - 1, line);
+            //
             return AutomataType.MainStructure;
         }
 
