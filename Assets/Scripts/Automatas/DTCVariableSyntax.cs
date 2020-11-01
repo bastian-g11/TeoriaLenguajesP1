@@ -46,14 +46,13 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarSeparador(i, line);
                     }
 
                     else
                     {
                         Debug.Log("aaaaaaaaaaaaaaaaaaaasx: " + character + line[i - 1]);
                         errors = "- DTC1 El nombre de la variable empieza de manera incorrecta\n";
-
-                        //state = "E";
                     }
                     break;
 
@@ -69,33 +68,38 @@ public class DTCVariableSyntax : MonoBehaviour
                         state = "A";
                     }
 
-                    else if (character.Equals('+') || character.Equals('-') ||
-                       character.Equals('*') || character.Equals('/') || character.Equals('%'))
-                    {
-                        state = "F";
-                    }
+                    //else if (character.Equals('+') || character.Equals('-') ||
+                    //   character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                    //{
+                    //    state = "F";
+                    //    InsertarVariable(index, i - 1, line);
+                    //    InsertarOperador(i, line);
+                    //}
 
                     else if (character.Equals(','))
                     {
                         state = "EC";
+                        InsertarVariable(index, i, line);
+                        InsertarSeparador(i, line);
                     }
 
                     else if (character.Equals(' '))
                     {
                         state = "SS";
+                        InsertarVariable(index, i, line);
                     }
 
                     else if (character.Equals(';'))
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarVariable(index, i, line);
+                        InsertarSeparador(i, line);
                     }
 
                     else
                     {
                         errors = "- DTC2 El nombre de la variable empieza de manera incorrecta\n";
-
-                        //state = "E";
                     }
                     break;
 
@@ -105,6 +109,7 @@ public class DTCVariableSyntax : MonoBehaviour
                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
+
                     }
 
                     else if (character.Equals(','))
@@ -126,22 +131,21 @@ public class DTCVariableSyntax : MonoBehaviour
                     else
                     {
                         errors = "- DTC3 El nombre de la variable empieza de manera incorrecta\n";
-
-                        //state = "E";
                     }
                     break;
 
                 case "SS":
 
-                    if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
-                    {
-                        state = "F";
-                    }
+                    //if (character.Equals('+') || character.Equals('-') ||
+                    //    character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                    //{
+                    //    state = "F";
+                    //}
 
-                    else if (character.Equals(','))
+                    if (character.Equals(','))
                     {
                         state = "EC";
+                        InsertarSeparador(i, line);
                     }
 
                     else if (character.Equals(' '))
@@ -153,26 +157,26 @@ public class DTCVariableSyntax : MonoBehaviour
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarSeparador(i, line);
+
                     }
 
                     else
                     {
-                        errors = "- DTC4 El nombre de la variable empieza de manera incorrecta\n";
-
-                        //state = "E";
+                        errors = "- DTC4 Expresión de declaración contiene símbolo inválido\n";
                     }
                     break;
 
                 case "F":
-                    //state = "E";
                     if (character.Equals(';'))
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarSeparador(i, line);
                     }
                     else
                     {
-                        errors = "- DTC5 El nombre de la variable empieza de manera incorrecta\n";
+                        errors = "- DTC5 Expresión de declaración contiene símbolo inválido\n";
 
                     }
                     break;
@@ -183,7 +187,10 @@ public class DTCVariableSyntax : MonoBehaviour
 
                 case "VAE":
                     Debug.Log("Vuelve al autómata principal");
+
                     AutomataController.instance.index = i - 1;
+
+                    //InsertarNodo(index, i, line);
 
                     if (errors != null)
                     {
@@ -195,6 +202,17 @@ public class DTCVariableSyntax : MonoBehaviour
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
                     AutomataController.instance.index = i - 1;
+                    
+                    //if (line[i].Equals(','))
+                    //{
+                    //    InsertarNodo(index, i - 1, line);
+                    //}
+                    //else
+                    //{
+                    //    InsertarNodo(index, i, line);
+                    //}
+
+
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -224,6 +242,10 @@ public class DTCVariableSyntax : MonoBehaviour
                 ErrorController.instance.SetErrorMessage(errors);
                 ErrorController.instance.SetLineHasError(true);
             }
+
+            InsertarVariable(index, line.Length - 1, line);
+            InsertarSeparador(line.Length, line);
+            //InsertarNodo(index, line.Length - 1, line);
             return AutomataType.MainStructure;
         }
 
@@ -231,5 +253,33 @@ public class DTCVariableSyntax : MonoBehaviour
         ErrorController.instance.SetErrorMessage(errors);
         ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
+    }
+
+    public void InsertarNodo(int index, int i, string line)
+    {
+        int length = (i - 1) - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("tipo", variable);
+        Debug.Log("<color=green> Nodo: </color>" + variable);
+        Debug.Log("<color=blue> Primer Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetValue());
+        Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetNextNode());
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarVariable(int index, int i, string line)
+    {
+        int length = i - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarSeparador(int i, string line)
+    {
+        string separador = line.Substring(i, 1);
+        SinglyLinkedListController.instance.AddNode("Separador", separador);
+        UIController.instance.CreateUINode();
     }
 }

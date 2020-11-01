@@ -8,6 +8,11 @@ public class UIController : MonoBehaviour
     public Text txt;
     public Text errorText;
     public string lineaTexto;
+    public GameObject go_uiNode;
+    public Node createdNode;
+    public Transform nodeContainer;
+    public int distance = 2;
+
 
     #region singleton
     public static UIController instance;
@@ -41,5 +46,14 @@ public class UIController : MonoBehaviour
                         ErrorController.instance.GetLineErrors(); ;
             ErrorController.instance.RestartErrors();
         }
+    }
+
+    public void CreateUINode()
+    {
+        GameObject _go = Instantiate(go_uiNode, Vector3.right * distance, Quaternion.identity,nodeContainer);
+        distance = distance + 5;
+        UINode _uiNode = _go.GetComponent<UINode>();
+        createdNode.SetUINode(_uiNode);
+        _uiNode.SetUINode(createdNode);
     }
 }

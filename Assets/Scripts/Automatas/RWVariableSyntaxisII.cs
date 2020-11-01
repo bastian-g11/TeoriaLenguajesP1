@@ -1274,7 +1274,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     if (character.Equals('r'))
                     {
-                        state = "R";
+                        state = "R2";
                         Debug.Log("ESTOY EN EL ESTADO R");
                     }
 
@@ -1643,29 +1643,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     break;
 
-                case "EV":
-                    Debug.Log("Es una variable");
-                    AutomataController.instance.index = i;
-                    if (errors != null)
-                    {
-                        ErrorController.instance.SetErrorMessage(errors);
-                        ErrorController.instance.SetLineHasError(true);
-                    }
-                    return AutomataType.DTCVariableSyntax;
-
-                case "VAE":
-                    Debug.Log("Vuelve al autómata principal");
-                    AutomataController.instance.index = i - 1;
-                    if (errors != null)
-                    {
-                        ErrorController.instance.SetErrorMessage(errors);
-                        ErrorController.instance.SetLineHasError(true);
-                    }
-                    return AutomataType.MainStructure;
-
                 case "SS":
-                    Debug.Log("Entró espacio después de variable");
-                    if(character.Equals(';'))
+                    if (character.Equals(';'))
                     {
                         state = "VAE";
                     }
@@ -1689,6 +1668,44 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     break;
 
+                case "EV":
+                    Debug.Log("Es una variable");
+                    AutomataController.instance.index = i;
+
+                    //if (line[i].Equals(','))
+                    //{
+                    //    AutomataController.instance.index = i + 1;
+                    //    InsertarNodo(index, i + 1, line);
+                    //}
+                    //else
+                    //{
+                    //    AutomataController.instance.index = i - 1;
+                    //    InsertarNodo(index, i, line);
+                    //}
+
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
+
+                    return AutomataType.DTCVariableSyntax;
+
+                case "VAE":
+                    Debug.Log("Vuelve al autómata principal");
+
+                    AutomataController.instance.index = i - 1;
+                    //InsertarNodo(index, i, line);
+
+                    if (errors != null)
+                    {
+                        ErrorController.instance.SetErrorMessage(errors);
+                        ErrorController.instance.SetLineHasError(true);
+                    }
+                    return AutomataType.MainStructure;
+
+               
+
                 case "E":
                     Debug.Log("Entró a error en RWV2");
                     return AutomataType.Error;
@@ -1711,6 +1728,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
         else if (line[line.Length - 1].Equals(';'))
         {
+            InsertarVariable(index, line.Length - 1, line);
+            InsertarOperador(line.Length - 1, line);
             return AutomataType.MainStructure;
         }
 
@@ -1727,10 +1746,38 @@ public class RWVariableSyntaxisII : MonoBehaviour
             ErrorController.instance.SetErrorMessage(errors);
             ErrorController.instance.SetLineHasError(true);
         }
-        Debug.Log("aAAAAAAAAAAAAAA" + line[line.Length - 1]);
 
         ErrorController.instance.SetErrorMessage(errors);
         ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
+    }
+
+    public void InsertarNodo(int index, int i, string line)
+    {
+        int length = (i - 1) - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("tipo", variable);
+        Debug.Log("<color=green> Nodo: </color>" + variable);
+        Debug.Log("<color=blue> Primer Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetValue());
+        Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetNextNode());
+        UIController.instance.CreateUINode();
+
+    }
+
+    public void InsertarVariable(int index, int i, string line)
+    {
+        int length = i - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarOperador(int i, string line)
+    {
+        string operador = line.Substring(i, 1);
+        SinglyLinkedListController.instance.AddNode("Operador", operador);
+        UIController.instance.CreateUINode();
     }
 }

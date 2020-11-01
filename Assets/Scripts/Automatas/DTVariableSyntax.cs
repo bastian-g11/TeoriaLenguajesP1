@@ -45,19 +45,20 @@ public class DTVariableSyntax : MonoBehaviour
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 1");
                         state = "VAP";
+                        InsertarOperador(i, line);
                     }
 
                     else
                     {
                         Debug.Log("El nombre de la variable empieza de manera incorrecta");
                         errors = "- El nombre de la variable empieza de manera incorrecta\n";
-
                         //state = "E";
                     }
                     break;
@@ -78,28 +79,36 @@ public class DTVariableSyntax : MonoBehaviour
                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(','))
                     {
                         state = "EC";
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
                     {
                         state = "SS";
+                        InsertarVariable(index, i, line);
                     }
 
                     else if (character.Equals(';'))
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 2");
                         state = "VAP";
+                        InsertarVariable(index, i - 1, line);
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -115,6 +124,7 @@ public class DTVariableSyntax : MonoBehaviour
                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
+
                     }
 
                     else if (character.Equals(','))
@@ -152,11 +162,13 @@ public class DTVariableSyntax : MonoBehaviour
                         character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(','))
                     {
                         state = "EC";
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
@@ -168,12 +180,14 @@ public class DTVariableSyntax : MonoBehaviour
                     {
                         Debug.Log("Vuelve al automata principal");
                         state = "VAE";
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals('='))
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 4");
                         state = "VAP";
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -189,6 +203,9 @@ public class DTVariableSyntax : MonoBehaviour
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 5");
                         state = "VAP";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
+
                     }
 
                     else
@@ -206,7 +223,7 @@ public class DTVariableSyntax : MonoBehaviour
                     Debug.Log("Vuelve al autómata principal");
                     AutomataController.instance.index = i - 1;
 
-                    InsertarNodo(index, i, line);
+                    //InsertarNodo(index, i, line);
 
                     if (errors != null)
                     {
@@ -217,9 +234,10 @@ public class DTVariableSyntax : MonoBehaviour
 
                 case "RWVS2":
                     Debug.Log("Verifica variables con comas AVPR2");
+
                     AutomataController.instance.index = i - 1;
 
-                    InsertarNodo(index, i, line);
+                    //InsertarNodo(index, i - 1, line);
 
                     if (errors != null)
                     {
@@ -230,10 +248,10 @@ public class DTVariableSyntax : MonoBehaviour
 
                 case "VAP":
                     Debug.Log("Va al autómata de pila");
+
+                    //InsertarNodo(index,  i,  line);
+
                     //Se pasa solo la i para no procesar el = 
-
-                    InsertarNodo(index,  i,  line);
-
                     AutomataController.instance.index = i;
                     if (errors != null)
                     {
@@ -257,6 +275,8 @@ public class DTVariableSyntax : MonoBehaviour
                 ErrorController.instance.SetErrorMessage(errors);
                 ErrorController.instance.SetLineHasError(true);
             }
+
+            //InsertarNodo(index, line.Length, line);
             return AutomataType.MainStructure;
         }
 
@@ -265,6 +285,10 @@ public class DTVariableSyntax : MonoBehaviour
         ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
     }
+
+
+
+
 
     public void InsertarNodo(int index, int i, string line)
     {
@@ -276,5 +300,22 @@ public class DTVariableSyntax : MonoBehaviour
             singlyLinkedList.GetFirstNode().GetValue());
         Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
             singlyLinkedList.GetFirstNode().GetNextNode());
+        UIController.instance.CreateUINode();
+
+    }
+
+    public void InsertarVariable(int index, int i, string line)
+    {
+        int length = i - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarOperador(int i, string line)
+    {
+        string operador = line.Substring(i, 1);
+        SinglyLinkedListController.instance.AddNode("Operador", operador);
+        UIController.instance.CreateUINode();
     }
 }

@@ -40,18 +40,24 @@ public class VariableSyntax
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/'))
                     {
-                        state = "FF";
+                        state = "F";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
                     {
                         state = "SS";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals('='))
                     {
                         Debug.Log("Aquí debería ir al de pila 1");
                         state = "VAP";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -71,24 +77,27 @@ public class VariableSyntax
                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
                         state = "F";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
                     {
                         state = "SS";
+                        InsertarVariable(index, i, line);
                     }
 
                     else if (character.Equals('='))
                     {
                         Debug.Log("Aquí debería ir al de pila 2");
                         state = "VAP";
+                        InsertarVariable(index, i, line);
+                        InsertarOperador(i, line);
                     }
 
                     else
                     {
                         errors = "- Error en nombramiento de variable\n";
-
-                        //state = "E";
                     }
                     break;
 
@@ -98,6 +107,7 @@ public class VariableSyntax
                         character.Equals('*') || character.Equals('/'))
                     {
                         state = "F";
+                        InsertarOperador(i, line);
                     }
 
                     else if (character.Equals(' '))
@@ -110,6 +120,7 @@ public class VariableSyntax
                         //Lo manda al autómata de pila
                         Debug.Log("2. Aquí debería ir al de pila 3");
                         state = "VAP";
+                        InsertarOperador(i, line);
                     }
 
                     else
@@ -126,12 +137,12 @@ public class VariableSyntax
                         //Lo manda al autómata de pila
                         Debug.Log("Aquí debería ir al de pila 4");
                         state = "VAP";
+                        InsertarOperador(i, line);
                     }
 
                     else
                     {
                         errors = "- Error en nombramiento de variable\n";
-
                         //state = "E";
                     }
                     break;
@@ -158,5 +169,20 @@ public class VariableSyntax
         ErrorController.instance.SetErrorMessage(errors);
         ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
+    }
+
+    public void InsertarVariable(int index, int i, string line)
+    {
+        int length = i - index;
+        string variable = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarOperador(int i, string line)
+    {
+        string operador = line.Substring(i, 1);
+        SinglyLinkedListController.instance.AddNode("Operador", operador);
+        UIController.instance.CreateUINode();
     }
 }

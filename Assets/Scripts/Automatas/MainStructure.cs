@@ -49,14 +49,19 @@ public class MainStructure
                 error = "- La línea empieza con número\n";
                 ErrorController.instance.SetErrorMessage(error);
                 ErrorController.instance.SetLineHasError(true);
-                //return AutomataType.Error;
+                return AutomataType.Error;
             }
             else
             {
+                Debug.Log("Entró a error en MainStructure");
+                error = "- La línea empieza de forma incorrecta\n";
+                ErrorController.instance.SetErrorMessage(error);
+                ErrorController.instance.SetLineHasError(true);
                 return AutomataType.Error;
             }
         }
-
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        Debug.Log(SinglyLinkedListController.instance.singlyLinkedList);
         SinglyLinkedListController.instance.singlyLinkedList.TraverseLinkedList();
         //Reiniciar lista ligada
         return AutomataType.None;

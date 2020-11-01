@@ -1118,7 +1118,7 @@ public class ReservedWord
 
                     if (character.Equals('r'))
                     {
-                        state = "R";
+                        state = "R2";
                         Debug.Log("ESTOY EN EL ESTADO R");
                     }
 
@@ -1435,6 +1435,7 @@ public class ReservedWord
                 case "EV":
                     Debug.Log("Es una variable");
                     AutomataController.instance.index = i - 1;
+
                     //Insertar creación de nodo ??
 
                     if (errors != null)
@@ -1449,15 +1450,7 @@ public class ReservedWord
                     Debug.Log("Es una variable con tipo de dato");
                     AutomataController.instance.index = i - 1;
 
-                    int length = (i - 1) - index;
-                    string tipo = line.Substring(index, length);
-                    SinglyLinkedListController.instance.AddNode("tipo", tipo);
-                    Debug.Log("<color=green> Nodo: </color>" + tipo);
-                    Debug.Log("<color=blue> Primer Nodo: </color>"+SinglyLinkedListController.instance.
-                        singlyLinkedList.GetFirstNode().GetValue());
-                    Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
-                        singlyLinkedList.GetFirstNode().GetNextNode());
-
+                    InsertarNodo(index, i, line);
 
                     if (errors != null)
                     {
@@ -1481,5 +1474,18 @@ public class ReservedWord
         ErrorController.instance.SetErrorMessage(errors);
         ErrorController.instance.SetLineHasError(true);
         return AutomataType.Error;
+    }
+
+    public void InsertarNodo(int index, int i, string line)
+    {
+        int length = (i) - index;
+        string tipo = line.Substring(index, length);
+        SinglyLinkedListController.instance.AddNode("tipo", tipo);
+        Debug.Log("<color=green> Nodo: </color>" + tipo);
+        Debug.Log("<color=blue> Primer Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetValue());
+        Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
+            singlyLinkedList.GetFirstNode().GetNextNode());
+        UIController.instance.CreateUINode();
     }
 }
