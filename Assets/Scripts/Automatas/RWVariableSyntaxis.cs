@@ -18,15 +18,12 @@ public class RWVariableSyntaxis : MonoBehaviour
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
-            Debug.Log("Estoy en RWVS, en el estado: " + state);
-            Debug.Log("Símbolo a procesar: " + character);
 
             if (character.Equals('{') || character.Equals('}')
                 || character.Equals('(') || character.Equals(')')
                 || character.Equals('[') || character.Equals(']')
                 || character.Equals('<') || character.Equals('>'))
             {
-                Debug.Log("Entró un símbolo que debemos ignorar en RWVS");
                 continue;
             }
 
@@ -36,14 +33,12 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('i'))
                     {
                         state = "I12";
-                        Debug.Log("ESTOY EN EL ESTADO I12");
                         inicio = i;
                     }
 
                     else if (character.Equals('f'))
                     {
                         state = "F1";
-                        Debug.Log("ESTOY EN EL ESTADO F1");
                         inicio = i;
 
                     }
@@ -51,14 +46,12 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals('e'))
                     {
                         state = "E1";
-                        Debug.Log("ESTOY EN EL ESTADO E1");
                         inicio = i;
                     }
 
                     else if (character.Equals('S'))
                     {
                         state = "S2";
-                        Debug.Log("ESTOY EN EL ESTADO S2");
                         inicio = i;
 
                     }
@@ -66,7 +59,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals('b'))
                     {
                         state = "B1";
-                        Debug.Log("ESTOY EN EL ESTADO B1");
                         inicio = i;
 
                     }
@@ -74,7 +66,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals('c'))
                     {
                         state = "C";
-                        Debug.Log("ESTOY EN EL ESTADO C");
                         inicio = i;
 
                     }
@@ -82,7 +73,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals('d'))
                     {
                         state = "D";
-                        Debug.Log("ESTOY EN EL ESTADO D");
                         inicio = i;
 
                     }
@@ -92,10 +82,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "IN";
                     }
 
-                    /*Si no es ninguno de las letras de arriba
-                     *entonces todas las demás letras van a 
-                     * mandar al otro autómata
-                     * */
+         
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
@@ -107,19 +94,16 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
                     }
 
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
                     }
 
                     length = length + 1;
@@ -129,19 +113,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('n'))
                     {
                         state = "N1";
-                        Debug.Log("ESTOY EN EL ESTADO N1");
                     }
 
                     else if (character.Equals('f'))
                     {
                         state = "F2";
-                        Debug.Log("ESTOY EN EL ESTADO F2");
                     }
 
-                    /*Si no es ninguno de las letras de arriba
-                     *entonces todas las demás letras van a 
-                     * mandar al otro autómata
-                     * */
+             
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
@@ -200,7 +179,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('t'))
                     {
                         state = "T1";
-                        Debug.Log("ESTOY EN EL ESTADO T1");
                     }
 
                     /*Si no es ninguno de las letras de arriba
@@ -300,7 +278,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('l'))
                     {
                         state = "L1";
-                        Debug.Log("ESTOY EN EL ESTADO L1");
                     }
 
                     else if (Char.IsLetter(character))
@@ -332,7 +309,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
                     }
                     length = length + 1;
                     break;
@@ -341,7 +317,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('o'))
                     {
                         state = "O1";
-                        Debug.Log("ESTOY EN EL ESTADO O1");
                     }
 
                     else if (Char.IsLetter(character))
@@ -350,7 +325,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                         AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
-                    //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
                         || character.Equals('=') || character.Equals(';'))
@@ -399,7 +373,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('a'))
                     {
                         state = "A1";
-                        Debug.Log("ESTOY EN EL ESTADO A1");
                     }
 
                     else if (Char.IsLetter(character))
@@ -451,7 +424,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('t'))
                     {
                         state = "T2";
-                        Debug.Log("ESTOY EN EL ESTADO T2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -585,7 +557,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('o'))
                     {
                         state = "O2";
-                        Debug.Log("ESTOY EN EL ESTADO O2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -639,7 +610,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('o'))
                     {
                         state = "O3";
-                        Debug.Log("ESTOY EN EL ESTADO O3");
                     }
 
                     else if (Char.IsLetter(character))
@@ -692,7 +662,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('l'))
                     {
                         state = "L2";
-                        Debug.Log("ESTOY EN EL ESTADO L2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -785,7 +754,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('l'))
                     {
                         state = "L3";
-                        Debug.Log("ESTOY EN EL ESTADO L3");
                     }
 
                     else if (Char.IsLetter(character))
@@ -839,7 +807,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('s'))
                     {
                         state = "S1";
-                        Debug.Log("ESTOY EN EL ESTADO S1");
                     }
 
                     else if (Char.IsLetter(character))
@@ -893,7 +860,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('e'))
                     {
                         state = "E2";
-                        Debug.Log("ESTOY EN EL ESTADO E2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -990,7 +956,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('t'))
                     {
                         state = "T3";
-                        Debug.Log("ESTOY EN EL ESTADO T3");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1043,7 +1008,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('r'))
                     {
                         state = "R1";
-                        Debug.Log("ESTOY EN EL ESTADO R1");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1097,7 +1061,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('i'))
                     {
                         state = "I3";
-                        Debug.Log("ESTOY EN EL ESTADO I3");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1151,7 +1114,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('n'))
                     {
                         state = "N2";
-                        Debug.Log("ESTOY EN EL ESTADO N2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1204,7 +1166,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('g'))
                     {
                         state = "G";
-                        Debug.Log("ESTOY EN EL ESTADO G");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1246,7 +1207,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
                     }
 
                     length = length + 1;
@@ -1300,7 +1260,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('h'))
                     {
                         state = "H";
-                        Debug.Log("ESTOY EN EL ESTADO H");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1354,7 +1313,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('a'))
                     {
                         state = "A2";
-                        Debug.Log("ESTOY EN EL ESTADO A2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1397,7 +1355,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
 
                     }
 
@@ -1409,7 +1366,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('r'))
                     {
                         state = "R2";
-                        Debug.Log("ESTOY EN EL ESTADO R2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1507,7 +1463,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('o'))
                     {
                         state = "O4";
-                        Debug.Log("ESTOY EN EL ESTADO A1");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1561,7 +1516,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('u'))
                     {
                         state = "U";
-                        Debug.Log("ESTOY EN EL ESTADO U");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1616,7 +1570,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('b'))
                     {
                         state = "B2";
-                        Debug.Log("ESTOY EN EL ESTADO B2");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1671,7 +1624,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('l'))
                     {
                         state = "L4";
-                        Debug.Log("ESTOY EN EL ESTADO L4");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1725,7 +1677,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (character.Equals('e'))
                     {
                         state = "E3";
-                        Debug.Log("ESTOY EN EL ESTADO E3");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1877,9 +1828,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     break;
 
                 case "EV":
-                    Debug.Log("Es una variable");
                     AutomataController.instance.index = i - 1;
-                    //AutomataController.instance.index = i - 1;
 
                     //
 
@@ -1915,7 +1864,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     return AutomataType.DTVariableSyntax;
 
                 case "VAE":
-                    Debug.Log("Vuelve al autómata principal");
 
                     AutomataController.instance.index = i - 1;
                     InsertarVariable(index, i - 1, line);
@@ -1928,7 +1876,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     return AutomataType.MainStructure;
 
                 case "VAP":
-                    Debug.Log("Va al de pila desde RW");
                     AutomataController.instance.index = i;
 
                     //
@@ -1944,7 +1891,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                     return AutomataType.StackAutomata;
 
                 case "RWVS2":
-                    Debug.Log("Es una variable, va a RWVS2 desde RWVS");
                     //
                     if (line[i - 1].Equals(','))
                     {
@@ -1981,7 +1927,6 @@ public class RWVariableSyntaxis : MonoBehaviour
 
         if(state.Equals("VAE") || line[line.Length - 1].Equals(';'))
         {
-            Debug.Log("Vuelve al autómata principal, desde RWVS");
             if (errors != null)
             {
                 ErrorController.instance.SetErrorMessage(errors);
@@ -2021,11 +1966,7 @@ public class RWVariableSyntaxis : MonoBehaviour
         int length = (i - 1) - index;
         string variable = line.Substring(index, length);
         SinglyLinkedListController.instance.AddNode("tipo", variable);
-        Debug.Log("<color=green> Nodo: </color>" + variable);
-        Debug.Log("<color=blue> Primer Nodo: </color>" + SinglyLinkedListController.instance.
-            singlyLinkedList.GetFirstNode().GetValue());
-        Debug.Log("<color=blue> Siguiente Nodo: </color>" + SinglyLinkedListController.instance.
-            singlyLinkedList.GetFirstNode().GetNextNode());
+        
         UIController.instance.CreateUINode();
 
     }
@@ -2033,7 +1974,6 @@ public class RWVariableSyntaxis : MonoBehaviour
     public void InsertarVariable(int index, int i, string line)
     {
         int length = i - index;
-        Debug.Log("resta: " + length + "tamaño: " + line.Length);
 
         string variable = line.Substring(index, length);
         SinglyLinkedListController.instance.AddNode("Variable", variable);

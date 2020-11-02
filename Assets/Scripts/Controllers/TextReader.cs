@@ -80,54 +80,43 @@ public class TextReader : MonoBehaviour
                 {
                     case AutomataType.MainStructure:
                         nextAutomata = AutomataController.instance.StartMainStructure(aLine, index);
-                        Debug.Log("Uno: " + nextAutomata);
                         break;
 
                     case AutomataType.ReservedWord:
                         nextAutomata = AutomataController.instance.StartReserverdWord(aLine, index);
-                        Debug.Log("Dos: " + nextAutomata);
                         break;
 
                     case AutomataType.RWVariableSyntax:
                         nextAutomata = AutomataController.instance.StartRWVariableSyntax(aLine, index);
-                        Debug.Log("Tres: " + nextAutomata);
                         break;
 
                     case AutomataType.RW2VariableSyntax:
                         nextAutomata = AutomataController.instance.StartRWVariableSyntaxII(aLine, index);
-                        Debug.Log("Cuatro: " + nextAutomata);
                         break;
 
                     case AutomataType.VariableSyntax:
                         nextAutomata = AutomataController.instance.StartVariableSyntax(aLine, index);
-                        Debug.Log("Cinco: " + nextAutomata);
                         break;
 
                     case AutomataType.DTVariableSyntax:
                         nextAutomata = AutomataController.instance.StartDTVariableSyntax(aLine, index);
-                        Debug.Log("Seis: " + nextAutomata);
                         break;
 
                     case AutomataType.DTCVariableSyntax:
                         nextAutomata = AutomataController.instance.StartDTCVariableSyntax(aLine, index);
-                        Debug.Log("Siete: " + nextAutomata);
                         break;
 
                     case AutomataType.StackAutomata:
                         nextAutomata = AutomataController.instance.StartStackAutomata(aLine, index);
-                        Debug.Log("Ocho: " + nextAutomata);
                         break;
 
                     case AutomataType.Error:
-                        Debug.Log("Llegó a error en TextReader");
                         break;
 
                     case AutomataType.None:
-                        Debug.Log("Ningún autómata, debería aceptarse la línea (?");
                         break;
 
                     default:
-                        Debug.Log("Default case de TextReader");
                         break;
                 }
             }

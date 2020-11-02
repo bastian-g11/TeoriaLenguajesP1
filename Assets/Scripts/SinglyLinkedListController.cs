@@ -29,8 +29,6 @@ public class SinglyLinkedListController : MonoBehaviour
     public void AddNode(string _dataType, string _value)
     {
         Node y = singlyLinkedList.GetLastNode();
-        //Debug.Log("<color=yellow>AN Lista: </color>" + singlyLinkedList.GetFirstNode());
-        //Debug.Log("<color=yellow>AN Nodo Y: </color>" + y);
         singlyLinkedList.InsertNode(_dataType, _value, y);
     }
 

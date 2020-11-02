@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Vector3 touchStart;
-    public float zoomOutMin = 4;
-    public float zoomOutMax = 8;
+    public float zoomOutMin;
+    public float zoomOutMax;
 
 
     private void Update()

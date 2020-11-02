@@ -22,15 +22,12 @@ public class MainStructure
                 || character.Equals('[') || character.Equals(']')
                 || character.Equals('<') || character.Equals('>'))
             {
-                Debug.Log("Entró un símbolo que debemos ignorar en MS");
                 continue;
             }
 
             if (Char.IsLetter(character))
             {
                 AutomataController.instance.index = i;
-                Debug.Log("<color=green> Entró a palabras reservadas </color>");
-                Debug.Log("Entró con: " + character);
                 return AutomataType.ReservedWord;
             }
 
@@ -45,7 +42,6 @@ public class MainStructure
             }
             else if (Char.IsDigit(character))
             {
-                Debug.Log("Entró a error en MainStructure");
                 error = "- La línea empieza con número\n";
                 ErrorController.instance.SetErrorMessage(error);
                 ErrorController.instance.SetLineHasError(true);
@@ -53,7 +49,6 @@ public class MainStructure
             }
             else
             {
-                Debug.Log("Entró a error en MainStructure");
                 error = "- La línea empieza de forma incorrecta\n";
                 ErrorController.instance.SetErrorMessage(error);
                 ErrorController.instance.SetLineHasError(true);

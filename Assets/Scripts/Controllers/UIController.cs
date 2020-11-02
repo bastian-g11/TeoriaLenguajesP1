@@ -14,12 +14,12 @@ public class UIController : MonoBehaviour
     public GameObject listsCanvas;
     public Vector3 cameraPosition;
     public CameraMovement cameraMovement;
-
+    public bool isFile = false;
     public GameObject temporalContainerPrefab;
     public GameObject temporalContainer;
     public GameObject prefabListContainer;
     public GameObject listContainer;
-    public int distanceX = 8;
+    public int distanceX = 4;
     public int distanceY = 0;
 
 
@@ -47,6 +47,7 @@ public class UIController : MonoBehaviour
         distanceY = 0;
         Destroy(temporalContainer);
         temporalContainer = Instantiate(temporalContainerPrefab);
+        isFile = true;
         TextReader.instance.Recorrer(lineaTexto);
     }
 
@@ -62,11 +63,14 @@ public class UIController : MonoBehaviour
 
     public void ShowLinkedLists()
     {
-        Camera.main.transform.position = cameraPosition;
-        temporalContainer.SetActive(true);
-        errorsCanvas.SetActive(false);
-        listsCanvas.SetActive(true);
-        cameraMovement.enabled = true;
+        if(isFile)
+        {
+            Camera.main.transform.position = cameraPosition;
+            temporalContainer.SetActive(true);
+            errorsCanvas.SetActive(false);
+            listsCanvas.SetActive(true);
+            cameraMovement.enabled = true;
+        }
     }
 
     public void ShowLineErrors()
@@ -88,7 +92,7 @@ public class UIController : MonoBehaviour
 
     public void CreateContainer()
     {
-        distanceX = 2;
+        distanceX = 4;
         listContainer = Instantiate(prefabListContainer, temporalContainer.transform);
         distanceY = distanceY + 5;
     }

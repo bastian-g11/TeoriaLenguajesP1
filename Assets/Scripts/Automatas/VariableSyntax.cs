@@ -16,15 +16,12 @@ public class VariableSyntax
         for (int i = index; i < line.Length; i++)
         {
             character = line[i];
-            Debug.Log("Estoy en VS, en el estado: " + state);
-            Debug.Log("Símbolo a procesar: " + character);
 
             if (character.Equals('{') || character.Equals('}')
                 || character.Equals('(') || character.Equals(')')
                 || character.Equals('[') || character.Equals(']')
                 || character.Equals('<') || character.Equals('>'))
             {
-                Debug.Log("Entró un símbolo que debemos ignorar en VS");
                 continue;
             }
 
@@ -33,7 +30,6 @@ public class VariableSyntax
                 case "IN":
                     if (Char.IsLetterOrDigit(character))
                     {
-                        Debug.Log("VSC, estoy leyendo una letra o #");
                         state = "A";
                     }
 
@@ -53,7 +49,6 @@ public class VariableSyntax
 
                     else if (character.Equals('='))
                     {
-                        Debug.Log("Aquí debería ir al de pila 1");
                         state = "VAP";
                         InsertarVariable(index, i, line);
                         InsertarOperador(i, line);
@@ -88,7 +83,6 @@ public class VariableSyntax
 
                     else if (character.Equals('='))
                     {
-                        Debug.Log("Aquí debería ir al de pila 2");
                         state = "VAP";
                         InsertarVariable(index, i, line);
                         InsertarOperador(i, line);
@@ -101,7 +95,6 @@ public class VariableSyntax
                     break;
 
                 case "SS":
-                    Debug.Log("Entró a SS");
                     if(character.Equals('+') || character.Equals('-') ||
                          character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
@@ -116,8 +109,6 @@ public class VariableSyntax
 
                     else if (character.Equals('='))
                     {
-                        //Lo manda al autómata de pila
-                        Debug.Log("2. Aquí debería ir al de pila 3");
                         state = "VAP";
                         InsertarOperador(i, line);
                     }
@@ -133,8 +124,6 @@ public class VariableSyntax
                 case "F":
                     if (character.Equals('='))
                     {
-                        //Lo manda al autómata de pila
-                        Debug.Log("Aquí debería ir al de pila 4");
                         state = "VAP";
                         InsertarOperador(i, line);
                     }
@@ -142,7 +131,6 @@ public class VariableSyntax
                     else
                     {
                         errors = "- Error en nombramiento de variable\n";
-                        //state = "E";
                     }
                     break;
 

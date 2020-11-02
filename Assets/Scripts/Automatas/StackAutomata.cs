@@ -25,14 +25,11 @@ public class StackAutomata
             character = line[i];
             symbol = (string)stack.Peek();
 
-            Debug.Log("Símbolo en TOPE de pila: " + (string)stack.Peek());
-            Debug.Log("Símbolo a procesar: " + character);
 
             if (character.Equals('{') || character.Equals('}')
                 || character.Equals('(') || character.Equals(')')
                 || character.Equals('[') || character.Equals(']'))
             {
-                Debug.Log("Entró un símbolo que debemos ignorar en VS");
                 continue;
             }
 
@@ -65,15 +62,12 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró un espacio en el de pila");
                         inicio = i;
                     }
 
                     else
                     {
-                        Debug.Log("Error 1 ");
                         errors = errors + "- La asignación empieza de forma inválida\n";
-                        //Replace("ER");
                     }
                     break;
 
@@ -107,7 +101,6 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró un espacio en el de pila");
                         inicio = i;
                     }
 
@@ -186,7 +179,6 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró espacio en el de pila");
                         inicio = i;
                     }
 
@@ -244,7 +236,6 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró espacio en el de pila");
                         inicio = i;
                     }
 
@@ -338,7 +329,6 @@ public class StackAutomata
                     else if (character.Equals(' '))
                     {
                         Replace("K");
-                        Debug.Log("Entró espacio en el de pila, después de una variable");
                         InsertarClase(inicio, i, line, "Variable");
                         inicio = i;
                     }
@@ -421,7 +411,6 @@ public class StackAutomata
                     else if (character.Equals(' '))
                     {
                         Replace("K");
-                        Debug.Log("Entró espacio en el de pila, después de un #");
                         InsertarClase(inicio, i, line, "Número");
                         inicio = i;
                     }
@@ -433,11 +422,9 @@ public class StackAutomata
 
                     else if (character.Equals(';') || character.Equals(','))
                     {
-                        Debug.Log("Simbolo: "+character);
-                        Debug.Log("índice: "+i);
                         Replace("VAE");
                         InsertarClase(inicio, i, line, "Número");
-                                                InsertarSeparador(i, line);
+                        InsertarSeparador(i, line);
 
                         inicio = i;
                     }
@@ -478,7 +465,6 @@ public class StackAutomata
 
                     else if (character.Equals('"') || character.Equals('\''))
                     {
-                        Debug.Log("<color=yellow>Entrooo: </color>");
                         Replace("CM");
                         inicio = i;
                     }
@@ -490,7 +476,6 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró espacio en el de pila");
                         inicio = i;
                     }
 
@@ -549,7 +534,6 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró espacio en el de pila");
                         inicio = i;
 
                     }
@@ -585,7 +569,6 @@ public class StackAutomata
 
                     else if (character.Equals(' '))
                     {
-                        Debug.Log("Entró espacio en el de pila");
                         inicio = i;
                     }
 
@@ -621,7 +604,6 @@ public class StackAutomata
                     else if (character.Equals(' '))
                     {
                         Replace("W");
-                        Debug.Log("Entró espacio en el de pila, después de un operador");
                         inicio = i;
                     }
 
@@ -803,7 +785,6 @@ public class StackAutomata
 
                     break;
                 case "VAE":
-                    Debug.Log("Vuelve al autómata principal desde el de Pila");
                     AutomataController.instance.index = i;
                     if (errors != null)
                     {

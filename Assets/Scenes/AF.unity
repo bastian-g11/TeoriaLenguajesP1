@@ -488,10 +488,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 18
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -499,9 +499,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Show Linked Lists
-
-'
+  m_Text: Mostrar listas ligadas
 --- !u!222 &245518261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -964,7 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -972,8 +970,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
-    m_FontStyle: 0
+    m_FontSize: 24
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -1399,8 +1397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -4, y: 4}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -4, y: -0.6613159}
+  m_SizeDelta: {x: 211.12933, y: 34.661316}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &933598458
 MonoBehaviour:
@@ -1607,7 +1605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchStart: {x: 0, y: 0, z: 0}
   zoomOutMin: 1
-  zoomOutMax: 8
+  zoomOutMax: 14
 --- !u!1 &977226466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1666,8 +1664,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
-    m_FontStyle: 0
+    m_FontSize: 24
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -1781,6 +1779,7 @@ MonoBehaviour:
   listsCanvas: {fileID: 1031987758}
   cameraPosition: {x: 6, y: -7, z: -33}
   cameraMovement: {fileID: 963194229}
+  isFile: 0
   temporalContainerPrefab: {fileID: 5779944860946351785, guid: fc98ea6b72e809443af31c7d180be05f,
     type: 3}
   temporalContainer: {fileID: 0}
@@ -1915,7 +1914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 57910dcde21e44c48b55d6eb96005e38, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2090,10 +2089,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 18
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2101,7 +2100,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Select File
+  m_Text: 'Seleccionar archivo
 
 '
 --- !u!222 &1139393383
@@ -2223,8 +2222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4, y: 4}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 4, y: -0.6613159}
+  m_SizeDelta: {x: 184.86032, y: 34.661316}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1186428560
 MonoBehaviour:
@@ -2466,10 +2465,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 18
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2477,7 +2476,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Show Errors
+  m_Text: 'Errores
+
 
 '
 --- !u!222 &1552590241
@@ -2569,8 +2569,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1981774032}
   m_HandleRect: {fileID: 1981774031}
   m_Direction: 2
-  m_Value: 0.5
-  m_Size: 0.9904632
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2652,7 +2652,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2663,17 +2663,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '"Lorem ipsum dolor sit amet, consectetur sadsa
-
-
-    asdadipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-'
+  m_Text: "Aqu\xED aparecer\xE1n los mensajes de los error que contiene el c\xF3digo"
 --- !u!114 &1688663836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,17 +3292,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '"Lorem ipsum dolor sit amet, consectetur sadsa
-
-
-    asdadipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-'
+  m_Text: "Aqu\xED aparecer\xE1 el c\xF3digo que contiene el archivo con extensi\xF3n
+    .java"
 --- !u!222 &1188931694061211761
 CanvasRenderer:
   m_ObjectHideFlags: 0
