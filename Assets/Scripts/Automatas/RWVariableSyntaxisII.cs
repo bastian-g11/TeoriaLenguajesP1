@@ -10,6 +10,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
         string line = lineaToRead;
         string state = "IN";
         int index = _index;
+        int inicio = 0;
+        int length = 0;
         char character;
         string errors = null;
 
@@ -35,42 +37,56 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     {
                         state = "I12";
                         Debug.Log("ESTOY EN EL ESTADO I12");
+                        inicio = i;
                     }
 
                     else if (character.Equals('f'))
                     {
                         state = "F1";
                         Debug.Log("ESTOY EN EL ESTADO F1");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('e'))
                     {
                         state = "E1";
                         Debug.Log("ESTOY EN EL ESTADO E1");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('S'))
                     {
                         state = "S2";
                         Debug.Log("ESTOY EN EL ESTADO S2");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('b'))
                     {
                         state = "B1";
                         Debug.Log("ESTOY EN EL ESTADO B1");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('c'))
                     {
                         state = "C";
                         Debug.Log("ESTOY EN EL ESTADO C");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals('d'))
                     {
                         state = "D";
+                        inicio = i;
                         Debug.Log("ESTOY EN EL ESTADO D");
+                        inicio = i;
+
                     }
 
                     else if (character.Equals(' '))
@@ -104,6 +120,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "I12":
@@ -1363,7 +1380,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (character.Equals('o'))
                     {
                         state = "O4";
-                        Debug.Log("ESTOY EN EL ESTADO A1");
+                        Debug.Log("ESTOY EN EL ESTADO O4");
                     }
 
                     else if (Char.IsLetter(character))
@@ -1387,6 +1404,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        
                     }
 
                     else if (character.Equals(','))
@@ -1418,16 +1436,18 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
 
                     //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
+                    //else if (character.Equals('+') || character.Equals('-') ||
+                    //    character.Equals('*') || character.Equals('/') || character.Equals('%')
+                    //    || character.Equals(';'))
+                    //{
+                    //    state = "EV";
+                    //}
 
                     else if (character.Equals(' '))
                     {
@@ -1437,6 +1457,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))

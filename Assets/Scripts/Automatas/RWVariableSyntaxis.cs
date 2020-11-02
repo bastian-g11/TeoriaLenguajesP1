@@ -53,7 +53,6 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "E1";
                         Debug.Log("ESTOY EN EL ESTADO E1");
                         inicio = i;
-
                     }
 
                     else if (character.Equals('S'))
@@ -122,6 +121,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
                     length = length + 1;
                     break;
 
@@ -145,6 +145,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     //Operadores finales
@@ -153,6 +155,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(' '))
@@ -163,6 +167,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(','))
@@ -204,6 +210,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     //Operadores finales
@@ -212,6 +220,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(' '))
@@ -222,6 +232,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(','))
@@ -240,6 +252,7 @@ public class RWVariableSyntaxis : MonoBehaviour
 
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "T1":
@@ -247,11 +260,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -276,6 +292,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "F1":
@@ -289,6 +306,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -297,6 +315,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -307,6 +326,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else
@@ -314,7 +334,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
-
+                    length = length + 1;
                     break;
 
                 case "L1":
@@ -327,6 +347,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -335,6 +356,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -345,6 +367,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -368,6 +391,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "O1":
@@ -381,6 +405,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -389,6 +414,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -399,6 +425,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -416,6 +443,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "A1":
@@ -429,6 +457,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -437,6 +466,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -447,6 +477,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -465,6 +496,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "T2":
@@ -472,11 +504,13 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -504,6 +538,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
                     break;
 
                 case "F2":
@@ -511,11 +546,13 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -540,6 +577,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
                     break;
 
                 case "B1":
@@ -553,6 +591,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -561,6 +600,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -582,6 +622,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else
@@ -589,6 +630,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
+                    length = length + 1;
                     break;
 
                 case "O2":
@@ -602,6 +645,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -610,6 +654,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -620,6 +665,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -637,6 +683,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
+                    length = length + 1;
                     break;
 
                 case "O3":
@@ -650,6 +698,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -658,6 +707,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -668,6 +718,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -685,6 +736,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
+                    length = length + 1;
                     break;
 
                 case "L2":
@@ -692,11 +745,13 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -721,6 +776,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
+                    length = length + 1;
                     break;
 
                 case "E1":
@@ -734,6 +791,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -742,6 +800,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -752,6 +811,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -770,6 +830,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
+                    length = length + 1;
                     break;
 
                 case "L3":
@@ -783,6 +845,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -791,614 +854,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "S1":
-
-                    if (character.Equals('e'))
-                    {
-                        state = "E2";
-                        Debug.Log("ESTOY EN EL ESTADO E2");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "E2":
-
-                    if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
-                        //Se tuvo que agregar para seguir buscando errores
-                        state = "SS";
-                        //state = "E";
-
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "S2":
-
-                    if (character.Equals('t'))
-                    {
-                        state = "T3";
-                        Debug.Log("ESTOY EN EL ESTADO T3");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-                    }
-                    break;
-
-                case "T3":
-
-                    if (character.Equals('r'))
-                    {
-                        state = "R1";
-                        Debug.Log("ESTOY EN EL ESTADO R1");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "R1":
-
-                    if (character.Equals('i'))
-                    {
-                        state = "I3";
-                        Debug.Log("ESTOY EN EL ESTADO I3");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "I3":
-
-                    if (character.Equals('n'))
-                    {
-                        state = "N2";
-                        Debug.Log("ESTOY EN EL ESTADO N2");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-                    }
-                    break;
-
-                case "N2":
-
-                    if (character.Equals('g'))
-                    {
-                        state = "G";
-                        Debug.Log("ESTOY EN EL ESTADO G");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-                    }
-                    break;
-
-                case "G":
-
-                    if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
-                        //Se tuvo que agregar para seguir buscando errores
-                        state = "SS";
-                        //state = "E";
-
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "C":
-
-                    if (character.Equals('h'))
-                    {
-                        state = "H";
-                        Debug.Log("ESTOY EN EL ESTADO H");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "H":
-
-                    if (character.Equals('a'))
-                    {
-                        state = "A2";
-                        Debug.Log("ESTOY EN EL ESTADO A2");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "A2":
-
-                    if (character.Equals('r'))
-                    {
-                        state = "R2";
-                        Debug.Log("ESTOY EN EL ESTADO R2");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        state = "SS";
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(','))
-                    {
-                        state = "RWVS2";
-                    }
-
-                    else if (character.Equals(';'))
-                    {
-                        state = "VAE";
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-                    break;
-
-                case "R2":
-
-                    if (Char.IsLetter(character))
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-
-                    else if (Char.IsDigit(character))
-                    {
-                        state = "EV";
-                    }
-
-                    else if (character.Equals(' '))
-                    {
-                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
-                        //Se tuvo que agregar para seguir buscando errores
-                        state = "SS";
-                        //state = "E";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-
-                    else
-                    {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
-
-                    }
-
-                    break;
-
-                case "D":
-
-                    if (character.Equals('o'))
-                    {
-                        state = "O4";
-                        Debug.Log("ESTOY EN EL ESTADO A1");
-                    }
-
-                    else if (Char.IsLetter(character))
-                    {
-                        state = "EV";
-                    }
-
-                    //Operadores finales
-                    else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals('=') || character.Equals(';'))
-                    {
-                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1428,6 +884,676 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
 
                     }
+
+                    length = length + 1;
+                    break;
+
+                case "S1":
+
+                    if (character.Equals('e'))
+                    {
+                        state = "E2";
+                        Debug.Log("ESTOY EN EL ESTADO E2");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "E2":
+
+                    if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
+
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "S2":
+
+                    if (character.Equals('t'))
+                    {
+                        state = "T3";
+                        Debug.Log("ESTOY EN EL ESTADO T3");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "T3":
+
+                    if (character.Equals('r'))
+                    {
+                        state = "R1";
+                        Debug.Log("ESTOY EN EL ESTADO R1");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "R1":
+
+                    if (character.Equals('i'))
+                    {
+                        state = "I3";
+                        Debug.Log("ESTOY EN EL ESTADO I3");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "I3":
+
+                    if (character.Equals('n'))
+                    {
+                        state = "N2";
+                        Debug.Log("ESTOY EN EL ESTADO N2");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "N2":
+
+                    if (character.Equals('g'))
+                    {
+                        state = "G";
+                        Debug.Log("ESTOY EN EL ESTADO G");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "G":
+
+                    if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
+
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "C":
+
+                    if (character.Equals('h'))
+                    {
+                        state = "H";
+                        Debug.Log("ESTOY EN EL ESTADO H");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "H":
+
+                    if (character.Equals('a'))
+                    {
+                        state = "A2";
+                        Debug.Log("ESTOY EN EL ESTADO A2");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "A2":
+
+                    if (character.Equals('r'))
+                    {
+                        state = "R2";
+                        Debug.Log("ESTOY EN EL ESTADO R2");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "R2":
+
+                    if (Char.IsLetter(character))
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        errors = errors + "- Error en declaración, nombre de variable contiene palabra reservada\n";
+                        //Se tuvo que agregar para seguir buscando errores
+                        state = "SS";
+                        //state = "E";
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
+                    break;
+
+                case "D":
+
+                    if (character.Equals('o'))
+                    {
+                        state = "O4";
+                        Debug.Log("ESTOY EN EL ESTADO A1");
+                    }
+
+                    else if (Char.IsLetter(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    //Operadores finales
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                        || character.Equals('=') || character.Equals(';'))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(' '))
+                    {
+                        state = "SS";
+                    }
+
+                    else if (Char.IsDigit(character))
+                    {
+                        state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+                    }
+
+                    else if (character.Equals(','))
+                    {
+                        state = "RWVS2";
+                    }
+
+                    else if (character.Equals(';'))
+                    {
+                        state = "VAE";
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        //state = "E";
+
+                    }
+
+                    length = length + 1;
                     break;
 
                 case "O4":
@@ -1441,6 +1567,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
 
@@ -1450,6 +1577,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1460,6 +1588,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1478,6 +1607,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
 
                     }
+
+                    length = length + 1;
                     break;
 
                 case "U":
@@ -1491,6 +1622,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
 
@@ -1500,6 +1632,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1510,6 +1643,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1528,6 +1662,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
 
                     }
+
+                    length = length + 1;
                     break;
 
                 case "B2":
@@ -1541,6 +1677,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -1549,6 +1686,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1559,6 +1697,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1577,6 +1716,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
 
                     }
+
+                    length = length + 1;
                     break;
 
                 case "L4":
@@ -1590,6 +1731,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
@@ -1598,6 +1740,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                         || character.Equals('=') || character.Equals(';'))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1608,6 +1751,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1626,6 +1770,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
 
                     }
+
+                    length = length + 1;
                     break;
 
                 case "E3":
@@ -1633,11 +1779,13 @@ public class RWVariableSyntaxis : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1666,12 +1814,13 @@ public class RWVariableSyntaxis : MonoBehaviour
                         //state = "E";
                     }
 
+                    length = length + 1;
                     break;
 
                 case "SS":
                     if (character.Equals('='))
                     {
-                        state = "EV";
+                        state = "VAP";
                     }
                     else if (character.Equals(' '))
                     {
@@ -1688,11 +1837,41 @@ public class RWVariableSyntaxis : MonoBehaviour
                         state = "VAE";
                     }
 
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
+                    {
+                        state = "FF";
+                    }
+
                     else
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+
+                    break;
+
+                case "FF":
+                    if(character.Equals('='))
+                    {
+                        AutomataController.instance.index = i + 1;
+
+                        InsertarVariable(index, i - 1, line);
+                        InsertarOperador(i - 1, line);
+
+                        if (errors != null)
+                        {
+                            ErrorController.instance.SetErrorMessage(errors);
+                            ErrorController.instance.SetLineHasError(true);
+                        }
+                        return AutomataType.StackAutomata;
+                    }
+
+                    else
+                    {
+                        errors = "- Error en declaración, expresión contiene símbolo inválido\n";
+                    }
+
                     break;
 
                 case "EV":
@@ -1701,6 +1880,14 @@ public class RWVariableSyntaxis : MonoBehaviour
                     //AutomataController.instance.index = i - 1;
 
                     //
+
+                    if (line[i-1].Equals('+') || line[i - 1].Equals('-') ||
+                        line[i - 1].Equals('*') || line[i - 1].Equals('/') || line[i - 1].Equals('%')
+                        || line[i - 1].Equals('=') || line[i - 1].Equals(';'))
+                    {
+                        AutomataController.instance.index = i - 2;
+                    }
+
                     if (line[i - 1].Equals(';'))
                     {
                         InsertarVariable(index, i - 1, line);
@@ -1843,11 +2030,9 @@ public class RWVariableSyntaxis : MonoBehaviour
     public void InsertarVariable(int index, int i, string line)
     {
         int length = i - index;
-        string s = AutomataController.instance.exp;
         string variable = line.Substring(index, length);
-        SinglyLinkedListController.instance.AddNode("Variable", s + variable);
+        SinglyLinkedListController.instance.AddNode("Variable", variable);
         UIController.instance.CreateUINode();
-        AutomataController.instance.exp = "";
     }
 
     public void InsertarOperador(int i, string line)

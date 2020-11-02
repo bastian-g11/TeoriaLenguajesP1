@@ -204,7 +204,6 @@ public class DTVariableSyntax : MonoBehaviour
                     {
                         Debug.Log("DT: Aquí debería ir al de pila 5");
                         state = "VAP";
-                        InsertarVariable(index, i, line);
                         InsertarOperador(i, line);
 
                     }
@@ -312,6 +311,7 @@ public class DTVariableSyntax : MonoBehaviour
         string s = AutomataController.instance.exp;
         SinglyLinkedListController.instance.AddNode("Variable", s + variable);
         UIController.instance.CreateUINode();
+        AutomataController.instance.exp = "";
     }
 
     public void InsertarOperador(int i, string line)

@@ -266,7 +266,8 @@ public class DTCVariableSyntax : MonoBehaviour
     {
         int length = i - index;
         string variable = line.Substring(index, length);
-        SinglyLinkedListController.instance.AddNode("Variable", variable);
+        string s = AutomataController.instance.exp;
+        SinglyLinkedListController.instance.AddNode("Variable", s + variable);
         UIController.instance.CreateUINode();
     }
 
