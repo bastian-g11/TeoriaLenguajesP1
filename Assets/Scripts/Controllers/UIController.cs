@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour
     public GameObject temporalContainer;
     public GameObject prefabListContainer;
     public GameObject listContainer;
-    public int distanceX = 2;
+    public int distanceX = 8;
     public int distanceY = 0;
 
 
@@ -80,7 +80,7 @@ public class UIController : MonoBehaviour
     public void CreateUINode()
     {
         GameObject _go = Instantiate(go_uiNode, new Vector3(1 * distanceX, 1 * -distanceY, 0), Quaternion.identity, listContainer.transform);
-        distanceX = distanceX + 5;
+        distanceX = distanceX + 8;
         UINode _uiNode = _go.GetComponent<UINode>();
         createdNode.SetUINode(_uiNode);
         _uiNode.SetUINode(createdNode);

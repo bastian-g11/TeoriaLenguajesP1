@@ -1824,6 +1824,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     }
                     else if (character.Equals(' '))
                     {
+                        InsertarVariable(index, i, line);
                         state = "SS";
                     }
 
@@ -1835,6 +1836,7 @@ public class RWVariableSyntaxis : MonoBehaviour
                     else if (character.Equals(';'))
                     {
                         state = "VAE";
+
                     }
 
                     else if (character.Equals('+') || character.Equals('-') ||
@@ -1916,7 +1918,8 @@ public class RWVariableSyntaxis : MonoBehaviour
                     Debug.Log("Vuelve al autómata principal");
 
                     AutomataController.instance.index = i - 1;
-
+                    InsertarVariable(index, i - 1, line);
+                    InsertarOperador(i -1, line);
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -2030,6 +2033,8 @@ public class RWVariableSyntaxis : MonoBehaviour
     public void InsertarVariable(int index, int i, string line)
     {
         int length = i - index;
+        Debug.Log("resta: " + length + "tamaño: " + line.Length);
+
         string variable = line.Substring(index, length);
         SinglyLinkedListController.instance.AddNode("Variable", variable);
         UIController.instance.CreateUINode();

@@ -150,7 +150,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -200,7 +199,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -283,7 +281,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -330,7 +327,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -377,7 +373,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -424,7 +419,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -540,7 +534,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -588,7 +581,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -640,7 +632,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -728,7 +719,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -780,7 +770,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -831,7 +820,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -919,7 +907,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -971,7 +958,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1023,7 +1009,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1075,7 +1060,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1127,7 +1111,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1215,7 +1198,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1267,7 +1249,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1319,7 +1300,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1408,7 +1388,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1460,7 +1439,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
 
                     }
 
@@ -1508,7 +1486,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -1555,7 +1532,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))
@@ -1602,7 +1578,6 @@ public class ReservedWord
                     else if (character.Equals(' '))
                     {
                         state = "EV";
-                        AutomataController.instance.exp = line.Substring(index, i);
                     }
 
                     else if (Char.IsDigit(character))

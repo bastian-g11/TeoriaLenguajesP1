@@ -11,7 +11,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
         string state = "IN";
         int index = _index;
         int inicio = 0;
-        int length = 0;
+        int length = -1;
         char character;
         string errors = null;
 
@@ -85,7 +85,6 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         state = "D";
                         inicio = i;
                         Debug.Log("ESTOY EN EL ESTADO D");
-                        inicio = i;
 
                     }
 
@@ -97,22 +96,23 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+                        errors = "- 1 Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
 
                     }
 
                     else if (Char.IsDigit(character))
                     {
-                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
-                        //state = "E";
+                       
+                        state = "EV";
                     }
 
                     else
@@ -143,14 +143,17 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -161,6 +164,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(','))
@@ -179,6 +184,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "N1":
@@ -195,14 +202,17 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -213,6 +223,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(','))
@@ -231,6 +243,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "T1":
@@ -238,11 +252,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(' '))
@@ -255,7 +273,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -268,6 +286,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "F1":
@@ -281,14 +301,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
-                        character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        character.Equals('*') || character.Equals('/') || character.Equals('%'))
                     {
-                        state = "EV";
+                        errors = "- 12Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -299,6 +320,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -317,6 +339,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
 
                     break;
 
@@ -330,14 +353,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                     }
 
                     else if (character.Equals(' '))
@@ -348,6 +372,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -366,6 +391,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "O1":
@@ -379,14 +406,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -397,6 +426,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -415,6 +445,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "A1":
@@ -428,14 +460,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -446,6 +480,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -463,6 +498,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "T2":
@@ -470,11 +507,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -487,7 +526,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                       )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -500,6 +539,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "F2":
@@ -507,11 +548,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -524,7 +567,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -537,6 +580,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "B1":
@@ -550,14 +595,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -568,6 +615,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -586,6 +634,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "O2":
@@ -599,14 +649,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -617,6 +669,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -635,6 +688,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "O3":
@@ -648,14 +703,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                     }
 
                     else if (character.Equals(' '))
@@ -666,6 +722,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -684,6 +741,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "L2":
@@ -691,11 +750,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -708,7 +769,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -721,6 +782,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "E1":
@@ -734,14 +797,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                       )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -752,6 +817,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -769,6 +835,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
                     }
+                    length = length + 1;
+
                     break;
 
                 case "L3":
@@ -782,14 +850,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -800,6 +870,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -818,6 +889,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "S1":
@@ -831,14 +904,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -849,6 +924,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -867,6 +943,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "E2":
@@ -874,11 +952,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -891,7 +971,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -904,6 +984,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "S2":
@@ -917,14 +999,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -935,6 +1019,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -953,6 +1038,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "T3":
@@ -966,14 +1053,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -984,6 +1073,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1002,6 +1092,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "R1":
@@ -1015,14 +1107,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1033,6 +1127,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1051,6 +1146,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "I3":
@@ -1064,14 +1161,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1082,6 +1181,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1100,6 +1200,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "N2":
@@ -1113,14 +1215,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1131,6 +1235,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1149,6 +1254,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "G":
@@ -1156,11 +1263,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1173,7 +1282,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -1186,6 +1295,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "C":
@@ -1199,14 +1310,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1217,6 +1330,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1235,6 +1349,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "H":
@@ -1248,15 +1364,17 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1267,6 +1385,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1285,6 +1404,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "A2":
@@ -1298,15 +1419,17 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1317,6 +1440,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1335,6 +1459,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "R2":
@@ -1342,11 +1468,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1359,7 +1487,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -1372,6 +1500,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
 
                     break;
 
@@ -1386,14 +1515,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1404,7 +1535,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
-                        
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
+
                     }
 
                     else if (character.Equals(','))
@@ -1423,6 +1555,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
+
                     break;
 
                 case "O4":
@@ -1442,12 +1576,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
 
                     //Operadores finales
-                    //else if (character.Equals('+') || character.Equals('-') ||
-                    //    character.Equals('*') || character.Equals('/') || character.Equals('%')
-                    //    || character.Equals(';'))
-                    //{
-                    //    state = "EV";
-                    //}
+                    else if (character.Equals('+') || character.Equals('-') ||
+                        character.Equals('*') || character.Equals('/') || character.Equals('%')
+                       )
+                    {
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
+                    }
 
                     else if (character.Equals(' '))
                     {
@@ -1476,6 +1611,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
                     break;
 
                 case "U":
@@ -1495,9 +1631,10 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                        )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1508,6 +1645,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1526,6 +1664,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
                     break;
 
                 case "B2":
@@ -1539,14 +1678,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                       )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1557,6 +1698,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1575,6 +1717,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
                     break;
 
                 case "L4":
@@ -1588,14 +1731,16 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                       )
                     {
-                        state = "EV";
+                        errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
+
                     }
 
                     else if (character.Equals(' '))
@@ -1606,6 +1751,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(','))
@@ -1624,6 +1770,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                         //state = "E";
 
                     }
+                    length = length + 1;
                     break;
 
                 case "E3":
@@ -1631,11 +1778,13 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     if (Char.IsLetter(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (Char.IsDigit(character))
                     {
                         state = "EV";
+                        AutomataController.instance.exp = line.Substring(inicio, length - 1);
                     }
 
                     else if (character.Equals(' '))
@@ -1648,7 +1797,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     //Operadores finales
                     else if (character.Equals('+') || character.Equals('-') ||
                         character.Equals('*') || character.Equals('/') || character.Equals('%')
-                        || character.Equals(';'))
+                       )
                     {
                         errors = "- Error en declaración, nombre de variable contiene símbolo inválido\n";
                         //state = "E";
@@ -1662,6 +1811,7 @@ public class RWVariableSyntaxisII : MonoBehaviour
 
                     }
 
+                    length = length + 1;
                     break;
 
                 case "SS":
@@ -1739,7 +1889,8 @@ public class RWVariableSyntaxisII : MonoBehaviour
                     Debug.Log("Vuelve al autómata principal");
 
                     AutomataController.instance.index = i - 1;
-
+                    InsertarVariable(index, i - 1, line);
+                    InsertarOperador(i - 1, line);
                     if (errors != null)
                     {
                         ErrorController.instance.SetErrorMessage(errors);
@@ -1814,6 +1965,15 @@ public class RWVariableSyntaxisII : MonoBehaviour
         int length = i - index;
         string variable = line.Substring(index, length);
         SinglyLinkedListController.instance.AddNode("Variable", variable);
+        UIController.instance.CreateUINode();
+    }
+
+    public void InsertarVariable2(int index, int i, string line)
+    {
+        int length = i - index;
+        string variable = line.Substring(index, length);
+        string s = AutomataController.instance.exp;
+        SinglyLinkedListController.instance.AddNode("Variable", s +variable);
         UIController.instance.CreateUINode();
     }
 

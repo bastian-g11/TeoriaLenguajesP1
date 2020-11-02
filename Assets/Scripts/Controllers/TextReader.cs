@@ -62,7 +62,7 @@ public class TextReader : MonoBehaviour
             canContinue = true;
             lineNumber += 1;
             SetLinkedList();
-
+            AutomataController.instance.exp = "";
             UIController.instance.CreateContainer();
             Debug.Log(aLine);
             Debug.Log("*************************************************");

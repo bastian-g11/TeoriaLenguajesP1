@@ -87,7 +87,6 @@ public class DTCVariableSyntax : MonoBehaviour
                     else if (character.Equals(' '))
                     {
                         state = "SS";
-                        InsertarVariable(index - 1, i, line);
                     }
 
                     else if (character.Equals(';'))
@@ -269,6 +268,7 @@ public class DTCVariableSyntax : MonoBehaviour
         string s = AutomataController.instance.exp;
         SinglyLinkedListController.instance.AddNode("Variable", s + variable);
         UIController.instance.CreateUINode();
+        AutomataController.instance.exp = "";
     }
 
     public void InsertarSeparador(int i, string line)
