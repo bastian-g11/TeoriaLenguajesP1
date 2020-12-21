@@ -1397,7 +1397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -4, y: -0.6613159}
+  m_AnchoredPosition: {x: -4, y: -0.66137695}
   m_SizeDelta: {x: 211.12933, y: 34.661316}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &933598458
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchStart: {x: 0, y: 0, z: 0}
   zoomOutMin: 1
-  zoomOutMax: 14
+  zoomOutMax: 20
 --- !u!1 &977226466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4, y: -0.6613159}
+  m_AnchoredPosition: {x: 4, y: -0.66137695}
   m_SizeDelta: {x: 184.86032, y: 34.661316}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1186428560
